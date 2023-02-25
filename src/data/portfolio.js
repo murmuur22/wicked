@@ -1,7 +1,7 @@
 export default [
     {
         userName: 'imaging',
-        pfpUrl: '/assets/images/ImagingPfp.jpg',
+        pfpUrl: '/assets/images/ImagingPfp.JPG',
         enabled: true,
         dest: '/#/imaging'
     },
