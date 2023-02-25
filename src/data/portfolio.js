@@ -7,13 +7,13 @@ export default [
     },
     {
         userName: 'computing',
-        pfpUrl: '/assets/images/noUser.png',
+        pfpUrl: '/assets/images/noUserPfp.png',
         enabled: false,
         dest: ''
     },
     {
         userName: 'machining',
-        pfpUrl: '/assets/images/noUser.png',
+        pfpUrl: '/assets/images/noUserPfp.png',
         enabled: false,
         dest: ''
     }

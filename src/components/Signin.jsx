@@ -12,7 +12,7 @@ class Signin extends React.Component{
       }
 
     handleSignin = () => {
-        console.log('signing in');
+        console.log('dismissed = ' + this.state.dismissed);
         this.setState({ dismissed: !this.state.dismissed })
     }
 
