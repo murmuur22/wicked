@@ -23,8 +23,8 @@ class Signin extends React.Component{
                 <div>
                     <Profiles />
                     <div className='text-lg lg:text-xl font-display'>
-                        <div className='invisible lg:visible flex items-center justify-center flex-col text-center'>
-                            <p className="fixed md:inset-x-0 bottom-0 text-sm mb-3 font-terminal">
+                        <div className='flex items-center justify-center flex-col text-center'>
+                            <p className="fixed left-2 lg:inset-x-0 bottom-0 text-sm mb-3 font-terminal">
                                 <span>{siteVersion}</span> <span>by robbie dyson</span>
                             </p>
                         </div>
@@ -39,19 +39,19 @@ class Signin extends React.Component{
                         <div className='fixed flex flex-col md:flex-row bottom-2 right-2'>
                             <button 
                                 onClick={() => (window.open(resume, '_blank'))}
-                                className="cursor-pointer hover:underline underline-offset-1 decoration-2"
+                                className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
                             >
                                 [ RESUME ] 
                             </button> {' '}
                             <button 
                                 onClick={() => (window.open(email, '_self'))}
-                                className="cursor-pointer hover:underline underline-offset-1 decoration-2"
+                                className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
                             >
                                 [ CONTACT ] 
                             </button> {' '}
                             <button 
                                 onClick={this.handleSignin}
-                                className="cursor-pointer hover:underline underline-offset-1 decoration-2"
+                                className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
                             >
                                 [ BACK ] 
                             </button>

@@ -48,13 +48,13 @@ class Signin extends React.Component{
                 <div className='fixed flex flex-col md:flex-row bottom-2 left-2'>
                     <button
                         onClick={() => (window.open('https://www.instagram.com/murmuur_', '_blank'))}
-                        className="cursor-pointer hover:underline underline-offset-1 decoration-2"
+                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-start"
                     >
                         [ INSTAGRAM ] 
                     </button>
                     <button
                         onClick={() => (window.open('https://www.youtube.com/@murmuur_', '_blank'))}
-                        className="cursor-pointer hover:underline underline-offset-1 decoration-2"
+                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-start"
                     >
                         [ YOUTUBE ] 
                     </button>
@@ -62,19 +62,19 @@ class Signin extends React.Component{
                 <div className='fixed flex flex-col md:flex-row bottom-2 right-2'>
                     <button 
                         onClick={() => (window.open(resume, '_blank'))}
-                        className="cursor-pointer hover:underline underline-offset-1 decoration-2"
+                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
                     >
                         [ RESUME ] 
                     </button>
                     <button 
                         onClick={() => (window.open(email, '_self'))}
-                        className="cursor-pointer hover:underline underline-offset-1 decoration-2"
+                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
                     >
                         [ CONTACT ] 
                     </button>
                     <a href='/'>
                         <button 
-                            className="cursor-pointer hover:underline underline-offset-1 decoration-2"
+                            className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
                         >
                             [ SIGN OUT ] 
                         </button>
