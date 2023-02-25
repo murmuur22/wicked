@@ -27,5 +27,3 @@ class Profiles extends React.Component{
 }
 
 export default Profiles;
-
-//my-20 md:mt-72
