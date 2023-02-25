@@ -3,7 +3,7 @@ export default [
         userName: 'imaging',
         pfpUrl: '/assets/images/ImagingPfp.JPG',
         enabled: true,
-        dest: '/imaging'
+        dest: '/#/imaging'
     },
     {
         userName: 'computing',
