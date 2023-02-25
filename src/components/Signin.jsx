@@ -22,9 +22,9 @@ class Signin extends React.Component{
             {this.state.dismissed ? (
                 <div>
                     <Profiles />
-                    <div className='text-sm md:text-lg lg:text-xl font-display'>
+                    <div className='text-lg lg:text-xl font-display'>
                         <div className='invisible lg:visible flex items-center justify-center flex-col text-center'>
-                            <p className="fixed inset-x-0 bottom-0 text-xs md:text-sm mb-3 font-terminal">
+                            <p className="fixed md:inset-x-0 bottom-0 text-sm mb-3 font-terminal">
                                 <span>{siteVersion}</span> <span>by robbie dyson</span>
                             </p>
                         </div>
@@ -36,7 +36,7 @@ class Signin extends React.Component{
                             </button> */}
                         </div>
                         
-                        <div className='fixed bottom-2 right-2'>
+                        <div className='fixed flex flex-col md:flex-row bottom-2 right-2'>
                             <button 
                                 onClick={() => (window.open(resume, '_blank'))}
                                 className="cursor-pointer hover:underline underline-offset-1 decoration-2"
@@ -63,14 +63,14 @@ class Signin extends React.Component{
                 <img 
                     src={logoRef}
                     alt='wicked logo'
-                    className='w-24 md:w-48'
+                    className='w-48'
                 />
-                <h1 className="text-4xl md:text-7xl pb-0 mb-0 md:mb-0 font-bold">wicked</h1>
-                <h1 className="text-4xl md:text-7xl pt-0 mb-1 md:mb-3 font-light">.earth</h1>
-                <p className="text-xs md:text-sm mb-3 font-terminal">
+                <h1 className="text-7xl pb-0 mb-0 font-bold">wicked</h1>
+                <h1 className="text-7xl pt-0 mb-3 font-light">.earth</h1>
+                <p className="text-sm mb-3 font-terminal">
                     <span>{siteVersion}</span> <span>by robbie dyson</span>
                 </p>
-                <p className='text-base md:text-2xl font-display'>
+                <p className='text-2xl font-display'>
                 <span className='animate-blink'>&gt;</span>{' '}
                     <button 
                         onClick={this.handleSignin}

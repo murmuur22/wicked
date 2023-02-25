@@ -15,7 +15,7 @@ class Signin extends React.Component{
     render() {
         return (
         <div>
-            <div className='mb-8 md:mb-10'>
+            <div className='mb-24 md:mb-10'>
                 <div className='columns-1 md:columns-2 gap-0'>
                     <div className=''>
                         {photoPortfolio.map(image => (
@@ -27,9 +27,9 @@ class Signin extends React.Component{
                     </div>
                 </div>
             </div>
-            <div className='text-sm md:text-lg lg:text-xl font-display'>
+            <div className='text-lg lg:text-xl font-display'>
                 <div className='invisible lg:visible flex items-center justify-center flex-col text-center'>
-                    <p className="fixed inset-x-0 bottom-0 text-xs md:text-sm mb-3 font-terminal">
+                    <p className="fixed inset-x-0 bottom-0 text-sm mb-3 font-terminal">
                         <span>{siteVersion}</span> <span>by robbie dyson</span>
                     </p>
                 </div>
@@ -41,14 +41,17 @@ class Signin extends React.Component{
                     />
                     <h1 className="text-4xl md:text-7xl pb-0 mb-0 md:mb-0 font-sans font-bold">wicked</h1>
                     <h1 className="text-4xl md:text-7xl pt-0 mb-1 md:mb-3 font-light">.imaging</h1>
+                    <p className="text-xs md:text-sm mb-3 font-terminal visible lg:invisible">
+                        <span>{siteVersion}</span> <span>by robbie dyson</span>
+                    </p>
                 </div>
-                <div className='fixed bottom-2 left-2'>
+                <div className='fixed flex flex-col md:flex-row bottom-2 left-2'>
                     <button
                         onClick={() => (window.open('https://www.instagram.com/murmuur_', '_blank'))}
                         className="cursor-pointer hover:underline underline-offset-1 decoration-2"
                     >
                         [ INSTAGRAM ] 
-                    </button> {' '}
+                    </button>
                     <button
                         onClick={() => (window.open('https://www.youtube.com/@murmuur_', '_blank'))}
                         className="cursor-pointer hover:underline underline-offset-1 decoration-2"
@@ -56,19 +59,19 @@ class Signin extends React.Component{
                         [ YOUTUBE ] 
                     </button>
                 </div>
-                <div className='fixed bottom-2 right-2'>
+                <div className='fixed flex flex-col md:flex-row bottom-2 right-2'>
                     <button 
                         onClick={() => (window.open(resume, '_blank'))}
                         className="cursor-pointer hover:underline underline-offset-1 decoration-2"
                     >
                         [ RESUME ] 
-                    </button> {' '}
+                    </button>
                     <button 
                         onClick={() => (window.open(email, '_self'))}
                         className="cursor-pointer hover:underline underline-offset-1 decoration-2"
                     >
                         [ CONTACT ] 
-                    </button> {' '}
+                    </button>
                     <a href='/'>
                         <button 
                             className="cursor-pointer hover:underline underline-offset-1 decoration-2"
