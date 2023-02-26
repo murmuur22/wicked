@@ -16,14 +16,19 @@ module.exports = {
       animation: {
         'blink': 'blink 0.75s step-start infinite',
         'fadeIn': 'fadeIn 1.2s ease',
+        'fadeOutGreenBg': 'fadeOutGreenBg 0.7s ease',
       },
       keyframes: {
         blink: {
-          '50%': { opacity: '0' },
+          '50%': { 'opacity': '0' },
         },
         fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+          '0%': { 'opacity': '0' },
+          '100%': { 'opacity': '1' },
+        },
+        fadeOutGreenBg: {
+          '0%': { 'background-color': 'rgb(74 222 128)' },
+          '20%': { 'opacity': 'rgb(255 255 255)' },
         },
       }
     },

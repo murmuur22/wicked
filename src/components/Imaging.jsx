@@ -8,13 +8,24 @@ class Signin extends React.Component{
     constructor(props) {
         super(props);
         this.state = { 
-            Loaded : false,
+            verified : false,
+            dismissed : false,
         };
       }
 
-    useEffect = () => {
+    randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+    timeVerification = () => {
         setInterval(() => {
-            console.log('finished loading');
+            console.log('finished intro sequence');
+            this.setState({ verified: true })
+        }, this.randomIntFromInterval(100, 1000))
+    }
+    timeIntro = () => {
+        setInterval(() => {
+            console.log('verified');
             this.setState({ dismissed: true })
         }, 700)
     }
@@ -92,18 +103,36 @@ class Signin extends React.Component{
                     </div>
                 </div> 
             ) : (
-            <div className="fixed inset-0 flex items-center justify-center flex-col text-center">
-                <img 
-                    src={logoRef}
-                    alt='wicked logo'
-                    className='w-24 md:w-48'
-                />
-                <h1 className="text-2xl md:text-4xl pb-0 mb-0 font-display">client verified</h1>
-                <p className="text-sm mb-3 font-terminal">
-                    <span>{siteVersion}</span> <span>by robbie dyson</span>
-                </p>
-                {this.useEffect()}
-            </div>
+            <>
+            {this.state.verified ? (
+                <div className="fixed inset-0 flex items-center justify-center flex-col text-center">
+                    <img 
+                        src={logoRef}
+                        alt='wicked logo'
+                        className='w-24 md:w-48'
+                    />
+                    <h1 className="text-2xl md:text-4xl pb-0 mb-0 font-display">verification complete!</h1>
+                    <p className="text-sm mb-3 font-terminal">
+                        <span>{siteVersion}</span> <span>by robbie dyson</span>
+                    </p>
+                    {this.timeIntro()}
+                </div>
+            ):(
+                <div className="fixed inset-0 flex items-center justify-center flex-col text-center">
+                    <img 
+                        src={logoRef}
+                        alt='wicked logo'
+                        className='w-24 md:w-48'
+                    />
+                    <h1 className="text-2xl md:text-4xl pb-0 mb-0 font-display">verifying client...</h1>
+                    <p className="text-sm mb-3 font-terminal">
+                        <span>{siteVersion}</span> <span>by robbie dyson</span>
+                    </p>
+                    {this.timeVerification()}
+                </div>
+            )}
+            </>
+            
             ) }
         </>
         

@@ -4,7 +4,7 @@ import { siteVersion, logoRef } from '../data/sitevalues';
 function LoginItem ({alt, imgRef}){
 
     return(
-    <div className="fixed inset-0 flex items-center justify-center flex-col text-center">
+        <div className="fixed inset-0 flex items-center justify-center flex-col text-center">
         <img 
             src={logoRef}
             alt='wicked logo'
@@ -14,6 +14,7 @@ function LoginItem ({alt, imgRef}){
         <p className="text-sm mb-3 font-terminal">
             <span>{siteVersion}</span> <span>by robbie dyson</span>
         </p>
+        
     </div>
 )
 }
