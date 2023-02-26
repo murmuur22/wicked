@@ -15,10 +15,15 @@ module.exports = {
       },
       animation: {
         'blink': 'blink 0.75s step-start infinite',
+        'fadeIn': 'fadeIn 1.2s ease',
       },
       keyframes: {
         blink: {
           '50%': { opacity: '0' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
       }
     },

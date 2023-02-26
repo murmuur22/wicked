@@ -8,80 +8,105 @@ class Signin extends React.Component{
     constructor(props) {
         super(props);
         this.state = { 
-            
+            Loaded : false,
         };
       }
 
+    useEffect = () => {
+        setInterval(() => {
+            console.log('finished loading');
+            this.setState({ dismissed: true })
+        }, 700)
+    }
+
     render() {
         return (
-        <div>
-            <div className='mb-24 md:mb-10'>
-                <div className='columns-1 md:columns-2 gap-0'>
-                    <div className=''>
-                        {photoPortfolio.map(image => (
-                            <ImagingItems 
-                                alt = {image.alt}
-                                imgRef = {image.imgRef}
-                            />
-                        ))}
+        <>
+            {this.state.dismissed ? (
+                <div className='animate-fadeIn'>
+                    <div className='mb-24 md:mb-10'>
+                        <div className='columns-1 md:columns-2 gap-0'>
+                            <div className=''>
+                                {photoPortfolio.map(image => (
+                                    <ImagingItems 
+                                        alt = {image.alt}
+                                        imgRef = {image.imgRef}
+                                    />
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div className='text-lg lg:text-xl font-display'>
+                        <div className='invisible lg:visible flex items-center justify-center flex-col text-center'>
+                            <p className="fixed inset-x-0 bottom-0 text-sm mb-3 font-terminal">
+                                <span>{siteVersion}</span> <span>by robbie dyson</span>
+                            </p>
+                        </div>
+                        <div className='fixed inset-0 flex items-center justify-center flex-col text-center'>
+                            <img 
+                                src={logoRef}
+                                alt='wicked logo'
+                                className='w-24 md:w-48'
+                            />
+                            <h1 className="text-4xl md:text-7xl pb-0 mb-0 md:mb-0 font-sans font-bold">wicked</h1>
+                            <h1 className="text-4xl md:text-7xl pt-0 mb-1 md:mb-3 font-light">.imaging</h1>
+                            <p className="text-xs md:text-sm mb-3 font-terminal visible lg:invisible">
+                                <span>{siteVersion}</span> <span>by robbie dyson</span>
+                            </p>
+                        </div>
+                        <div className='fixed flex flex-col md:flex-row bottom-2 left-2'>
+                            <button
+                                onClick={() => (window.open('https://www.instagram.com/murmuur_', '_blank'))}
+                                className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-start"
+                            >
+                                [ INSTAGRAM ] 
+                            </button>
+                            <button
+                                onClick={() => (window.open('https://www.youtube.com/@murmuur_', '_blank'))}
+                                className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-start"
+                            >
+                                [ YOUTUBE ] 
+                            </button>
+                        </div>
+                        <div className='fixed flex flex-col md:flex-row bottom-2 right-2'>
+                            <button 
+                                onClick={() => (window.open(resume, '_blank'))}
+                                className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
+                            >
+                                [ RESUME ] 
+                            </button>
+                            <button 
+                                onClick={() => (window.open(email, '_self'))}
+                                className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
+                            >
+                                [ CONTACT ] 
+                            </button>
+                            <a href='/'>
+                                <button 
+                                    className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
+                                >
+                                    [ SIGN OUT ] 
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div> 
+            ) : (
+            <div className="fixed inset-0 flex items-center justify-center flex-col text-center">
+                <img 
+                    src={logoRef}
+                    alt='wicked logo'
+                    className='w-24 md:w-48'
+                />
+                <h1 className="text-2xl md:text-4xl pb-0 mb-0 font-display">client verified</h1>
+                <p className="text-sm mb-3 font-terminal">
+                    <span>{siteVersion}</span> <span>by robbie dyson</span>
+                </p>
+                {this.useEffect()}
             </div>
-            <div className='text-lg lg:text-xl font-display'>
-                <div className='invisible lg:visible flex items-center justify-center flex-col text-center'>
-                    <p className="fixed inset-x-0 bottom-0 text-sm mb-3 font-terminal">
-                        <span>{siteVersion}</span> <span>by robbie dyson</span>
-                    </p>
-                </div>
-                <div className='fixed inset-0 flex items-center justify-center flex-col text-center'>
-                    <img 
-                        src={logoRef}
-                        alt='wicked logo'
-                        className='w-24 md:w-48'
-                    />
-                    <h1 className="text-4xl md:text-7xl pb-0 mb-0 md:mb-0 font-sans font-bold">wicked</h1>
-                    <h1 className="text-4xl md:text-7xl pt-0 mb-1 md:mb-3 font-light">.imaging</h1>
-                    <p className="text-xs md:text-sm mb-3 font-terminal visible lg:invisible">
-                        <span>{siteVersion}</span> <span>by robbie dyson</span>
-                    </p>
-                </div>
-                <div className='fixed flex flex-col md:flex-row bottom-2 left-2'>
-                    <button
-                        onClick={() => (window.open('https://www.instagram.com/murmuur_', '_blank'))}
-                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-start"
-                    >
-                        [ INSTAGRAM ] 
-                    </button>
-                    <button
-                        onClick={() => (window.open('https://www.youtube.com/@murmuur_', '_blank'))}
-                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-start"
-                    >
-                        [ YOUTUBE ] 
-                    </button>
-                </div>
-                <div className='fixed flex flex-col md:flex-row bottom-2 right-2'>
-                    <button 
-                        onClick={() => (window.open(resume, '_blank'))}
-                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                    >
-                        [ RESUME ] 
-                    </button>
-                    <button 
-                        onClick={() => (window.open(email, '_self'))}
-                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                    >
-                        [ CONTACT ] 
-                    </button>
-                    <a href='/'>
-                        <button 
-                            className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                        >
-                            [ SIGN OUT ] 
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
+            ) }
+        </>
+        
         )
     }
 
