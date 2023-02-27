@@ -49,7 +49,7 @@ class Signin extends React.Component{
                             </div>
                         </div>
                     </div>
-                    <div className='text-lg lg:text-xl font-display'>
+                    <div className='text-lg md:text-xl font-display'>
                         <div className='invisible lg:visible flex items-center justify-center flex-col text-center'>
                             <p className="fixed inset-x-0 bottom-0 text-sm mb-3 font-terminal">
                                 <span>{siteVersion}</span> <span>by robbie dyson</span>
@@ -67,7 +67,7 @@ class Signin extends React.Component{
                                 <span>{siteVersion}</span> <span>by robbie dyson</span>
                             </p>
                         </div>
-                        <div className='fixed flex flex-col md:flex-row bottom-2 left-2'>
+                        <div className='fixed flex flex-col md:flex-row bottom-2 left-2 md:gap-1'>
                             <button
                                 onClick={() => (window.open('https://www.instagram.com/murmuur_', '_blank'))}
                                 className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-start"
@@ -81,7 +81,7 @@ class Signin extends React.Component{
                                 [ YOUTUBE ] 
                             </button>
                         </div>
-                        <div className='fixed flex flex-col md:flex-row bottom-2 right-2'>
+                        <div className='fixed flex flex-col md:flex-row bottom-2 right-2 md:gap-1'>
                             <button 
                                 onClick={() => (window.open(resume, '_blank'))}
                                 className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
@@ -94,13 +94,12 @@ class Signin extends React.Component{
                             >
                                 [ CONTACT ] 
                             </button>
-                            <a href='/'>
-                                <button 
-                                    className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                                >
-                                    [ SIGN OUT ] 
-                                </button>
-                            </a>
+                            <button
+                                onClick={() => (window.open('/', '_self'))}
+                                className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
+                            >
+                                [ SIGN OUT ] 
+                            </button>
                         </div>
                     </div>
                 </div> 

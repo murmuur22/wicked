@@ -8,7 +8,7 @@ function LoginItem ({userName, pfpUrl, enabled, dest}){
 
     return( enabled ? (
             <button 
-                className='cursor-pointer transition duration-300 hover:scale-125 group snap-center snap-always'
+                className='cursor-pointer transition duration-300 hover:scale-125 group'
                 onClick={handleClick}
             >
                 <img
@@ -19,7 +19,7 @@ function LoginItem ({userName, pfpUrl, enabled, dest}){
                 <h3 className='text-lg md:text-xl mt-2 font-body text-center group-hover:underline underline-offset-1 decoration-2'>.{userName}</h3>
             </button> 
         ) : (
-            <div className='cursor-not-allowed transition duration-300 hover:scale-125 group snap-center snap-always'>
+            <div className='cursor-not-allowed transition duration-300 hover:scale-125 group'>
                 <img 
                     src={pfpUrl} 
                     alt='profile picture'

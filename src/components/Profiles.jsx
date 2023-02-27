@@ -9,7 +9,7 @@ class Profiles extends React.Component{
 
     render() {
         return (
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24 lg:gap-40 snap-mandatory snap-x'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24 lg:gap-40'>
                 {portfolio.map(profile => (
                     <LoginItem 
                         userName = {profile.userName}
