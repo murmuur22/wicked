@@ -9,8 +9,7 @@ class Profiles extends React.Component{
 
     render() {
         return (
-        <div className='inset-0 flex flex-col md:flex-row items-center justify-center absolute'>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24 lg:gap-40 '>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24 lg:gap-40 snap-mandatory snap-x'>
                 {portfolio.map(profile => (
                     <LoginItem 
                         userName = {profile.userName}
@@ -20,7 +19,6 @@ class Profiles extends React.Component{
                     />
                 ))}
             </div>
-        </div>
         )
     }
 
