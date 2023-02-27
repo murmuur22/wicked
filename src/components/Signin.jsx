@@ -45,7 +45,7 @@ class Signin extends React.Component{
                 return(
                     <>
                         <div>
-                            <div className='inset-0 flex flex-col items-center justify-center absolute gap-12 md:gap-20 lg:gap-24'>
+                            <div className='inset-0 flex flex-col items-center justify-center relative md:absolute gap-12 md:gap-20 lg:gap-24 mt-20 mb-40 md:mt-0 md:mb-0'>
                                 <Profiles />
                                 <div className='flex flex-col gap-2'>
                                     <button
