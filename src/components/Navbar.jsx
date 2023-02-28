@@ -8,6 +8,10 @@ class Navbar extends React.Component{
 
         (typeof props.left !== 'undefined') ? (this.left = props.left):(this.left = []);
         (typeof props.right !== 'undefined') ? (this.right = props.right):(this.right = []);
+        (typeof props.byLine !== 'undefined') ? (this.byLine = props.byLine):(this.byLine = true);
+        (typeof props.key !== 'undefined') ? (this.key = props.key):(this.key = '');
+
+
  
     }
 
@@ -41,16 +45,31 @@ class Navbar extends React.Component{
 
     }
 
-    renderNavbar = () => {
-
-        return (
-            <div className='text-lg md:text-xl font-display'>
+    renderByLine = () => {
+        console.log(this.byLine)
+        if (this.byLine == true){
+            return(
                 <div className='flex items-center justify-center flex-col text-center'>
                     <p className="fixed left-2 lg:inset-x-0 bottom-0 text-sm mb-3 font-terminal">
                         <span>{siteVersion}</span> <span>by robbie dyson</span>
                     </p>
                 </div>
+            )
+        }
+        else {
+            return(
+                <>
+                    
+                </>
+            )
+        }
+    }
 
+    renderNavbar = () => {
+
+        return (
+            <div className='text-lg md:text-xl font-display' key={this.key}>
+                {this.renderByLine()}
                 <div className='fixed bottom-2 left-2'>
                     {this.left.map(button => (
                         <button

@@ -20,7 +20,7 @@ class Signin extends React.Component{
         this.setState({ view: "select" });
     }
 
-    renderSwitch = () => {
+    renderView = () => {
         switch(this.state.view){
             case "welcome":
                 return(
@@ -71,21 +71,26 @@ class Signin extends React.Component{
                                     </button>
                                 </div>
                             </div>
-                            <Navbar 
+                        </div>
+                        <Navbar 
+                                key='select'
                                 right={[
                                     { name: 'RESUME', event:'resume' },
                                     { name: 'CONTACT', event:'contact' },
                                     { name: 'BACK', event:this.backToWelcome },
                                 ]}
                             />
-                        </div>
                     </>
                 );
             case "admin":
                 return (
                     <>
                         <div>
-                        <form className='font-body text-xl flex flex-col inset-0 items-center justify-center absolute'>
+                        <form className='
+                            inset-0 flex flex-col items-center justify-center absolute gap-6
+                            font-body text-xl
+                            '
+                        >
                             <label className='flex flex-col md:flex-row gap-2'>
                                 <span>password</span>
                                 <input 
@@ -97,10 +102,12 @@ class Signin extends React.Component{
                                     placeholder="enter password"
                                 />
                             </label>
+                            <input type='submit' value='ENTER' className='cursor-pointer hover:underline underline-offset-1 decoration-2'/>
                         </form>
                         
                         </div>
                         <Navbar 
+                            key='admin'
                             right={[
                                 { name: 'RESUME', event:'resume' },
                                 { name: 'CONTACT', event:'contact' },
@@ -140,8 +147,10 @@ class Signin extends React.Component{
                                     placeholder="enter password"
                                 />
                             </label>
+                            <input type='submit' value='ENTER' className='cursor-pointer hover:underline underline-offset-1 decoration-2'/>
                         </form>
                         <Navbar 
+                            key='other'
                             right={[
                                 { name: 'RESUME', event:'resume' },
                                 { name: 'CONTACT', event:'contact' },
@@ -157,7 +166,7 @@ class Signin extends React.Component{
     render() {
         return (
             <>
-                {this.renderSwitch()}
+                {this.renderView()}
             </>
         );
     }
