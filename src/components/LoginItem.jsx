@@ -33,5 +33,3 @@ function LoginItem ({userName, pfpUrl, enabled, dest}){
 }
 
 export default LoginItem
-
-//transition duration-300 group-hover:border-[1px] border-solid border-black

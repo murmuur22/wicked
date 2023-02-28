@@ -1,18 +1,27 @@
 import React from 'react';
 import { siteVersion, email, resume, logoRef } from '../data/sitevalues';
 import Profiles from './Profiles';
+import Navbar from './Navbar';
 
 
 class Signin extends React.Component{
     constructor(props) {
         super(props);
         this.state = { 
-            currentView : "welcome",
+            view : "welcome",
         };
     }
 
+    backToWelcome = () => {
+        this.setState({ view: "welcome" });
+    }
+
+    backToSelect = () => {
+        this.setState({ view: "select" });
+    }
+
     renderSwitch = () => {
-        switch(this.state.currentView){
+        switch(this.state.view){
             case "welcome":
                 return(
                     <>
@@ -30,7 +39,7 @@ class Signin extends React.Component{
                         <p className='text-2xl font-display'>
                         <span className='animate-blink pr-4'>&gt;</span>
                             <button 
-                                onClick={() => this.setState({ currentView: "select" })}
+                                onClick={() => this.setState({ view: "select" })}
                                 className="cursor-pointer hover:underline underline-offset-1 decoration-2"
                             >
                                 SIGN IN
@@ -49,50 +58,27 @@ class Signin extends React.Component{
                                 <Profiles />
                                 <div className='flex flex-col gap-2'>
                                     <button
-                                        onClick={() => this.setState({ currentView: "admin" })}
+                                        onClick={() => this.setState({ view: "admin" })}
                                         className='cursor-pointer transition duration-300 hover:scale-125 group border-black border-2 rounded-full'
                                     >
                                     <p className='px-4 py-1 font-body text-sm'>administrator</p>
                                     </button>
                                     <button
-                                        onClick={() => this.setState({ currentView: "other" })}
+                                        onClick={() => this.setState({ view: "other" })}
                                         className='cursor-pointer transition duration-300 hover:scale-125 group border-black border-2 rounded-full'
                                     >
                                     <p className='px-3 py-1 font-body text-sm'>other...</p>
                                     </button>
                                 </div>
                             </div>
-                            <div className='text-lg md:text-xl font-display'>
-                                <div className='flex items-center justify-center flex-col text-center'>
-                                    <p className="fixed left-2 lg:inset-x-0 bottom-0 text-sm mb-3 font-terminal">
-                                        <span>{siteVersion}</span> <span>by robbie dyson</span>
-                                    </p>
-                                </div>
-                                <div className='fixed bottom-2 left-2'>
-
-                                </div>
-                                
-                                <div className='fixed flex flex-col md:flex-row bottom-2 right-2 md:gap-1'>
-                                    <button 
-                                        onClick={() => (window.open(resume, '_blank'))}
-                                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                                    >
-                                        [ RESUME ] 
-                                    </button>
-                                    <button 
-                                        onClick={() => (window.open(email, '_self'))}
-                                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                                    >
-                                        [ CONTACT ] 
-                                    </button>
-                                    <button 
-                                        onClick={() => this.setState({ currentView: "welcome" })}
-                                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                                    >
-                                        [ BACK ] 
-                                    </button>
-                                </div>
-                            </div>
+                            <Navbar 
+                                right={[
+                                    { name: 'RESUME', event: 'resume' },
+                                    { name: 'CONTACT', event: 'contact' },
+                                    { name: 'BACK', event: this.backToWelcome },
+                                ]    
+                                }
+                            />
                         </div>
                     </>
                 );
@@ -113,37 +99,15 @@ class Signin extends React.Component{
                                     />
                                 </label>
                             </form>
-                            <div className='text-lg md:text-xl font-display'>
-                                <div className='flex items-center justify-center flex-col text-center'>
-                                    <p className="fixed left-2 lg:inset-x-0 bottom-0 text-sm mb-3 font-terminal">
-                                        <span>{siteVersion}</span> <span>by robbie dyson</span>
-                                    </p>
-                                </div>
-                                <div className='fixed bottom-2 left-2'>
+                            <Navbar 
+                                right={[
+                                    { name: 'RESUME', event: 'resume' },
+                                    { name: 'CONTACT', event: 'contact' },
+                                    { name: 'BACK', event: this.backToSelect },
+                                ]    
+                                }
+                            />
 
-                                </div>
-                                
-                                <div className='fixed flex flex-col md:flex-row bottom-2 right-2 md:gap-1'>
-                                    <button 
-                                        onClick={() => (window.open(resume, '_blank'))}
-                                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                                    >
-                                        [ RESUME ] 
-                                    </button>
-                                    <button 
-                                        onClick={() => (window.open(email, '_self'))}
-                                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                                    >
-                                        [ CONTACT ] 
-                                    </button>
-                                    <button 
-                                        onClick={() => this.setState({ currentView: "select" })}
-                                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                                    >
-                                        [ BACK ] 
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                     </>
                 );
@@ -179,37 +143,14 @@ class Signin extends React.Component{
                                     />
                                 </label>
                             </form>
-                            <div className='text-lg md:text-xl font-display'>
-                                <div className='flex items-center justify-center flex-col text-center'>
-                                    <p className="fixed left-2 lg:inset-x-0 bottom-0 text-sm mb-3 font-terminal">
-                                        <span>{siteVersion}</span> <span>by robbie dyson</span>
-                                    </p>
-                                </div>
-                                <div className='fixed bottom-2 left-2'>
-
-                                </div>
-                                
-                                <div className='fixed flex flex-col md:flex-row bottom-2 right-2 md:gap-1'>
-                                    <button 
-                                        onClick={() => (window.open(resume, '_blank'))}
-                                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                                    >
-                                        [ RESUME ] 
-                                    </button>
-                                    <button 
-                                        onClick={() => (window.open(email, '_self'))}
-                                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                                    >
-                                        [ CONTACT ] 
-                                    </button>
-                                    <button 
-                                        onClick={() => this.setState({ currentView: "select" })}
-                                        className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
-                                    >
-                                        [ BACK ] 
-                                    </button>
-                                </div>
-                            </div>
+                            <Navbar 
+                                right={[
+                                    { name: 'RESUME', event: 'resume' },
+                                    { name: 'CONTACT', event: 'contact' },
+                                    { name: 'BACK', event: this.backToSelect },
+                                ]    
+                                }
+                            />
                         </div>
                     </>
                 );
