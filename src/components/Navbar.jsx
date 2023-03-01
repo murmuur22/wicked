@@ -1,21 +1,20 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { siteVersion, email, resume, logoRef } from '../data/sitevalues';
 
 
-class Navbar extends React.Component{
-    constructor(props) {
-        super(props);
+function Navbar(props){
+    
+    const left = useRef([])
+    const right = useRef([])
+    const byLine = useRef(true)
+    const key = useRef('')
 
-        (typeof props.left !== 'undefined') ? (this.left = props.left):(this.left = []);
-        (typeof props.right !== 'undefined') ? (this.right = props.right):(this.right = []);
-        (typeof props.byLine !== 'undefined') ? (this.byLine = props.byLine):(this.byLine = true);
-        (typeof props.key !== 'undefined') ? (this.key = props.key):(this.key = '');
+    if (typeof props.left !== 'undefined') {left.current = props.left}
+    if (typeof props.right !== 'undefined') {right.current = props.right}
+    if (typeof props.byLine !== 'undefined') {byLine.current = props.byLine}
+    if (typeof props.key !== 'undefined') {key.current = props.key}
 
-
- 
-    }
-
-    getEventHandler = (event) => {
+    const getEventHandler = (event) => {
         switch(event){
             case 'instagram': // opens my instagram in a new window
                 return (
@@ -45,9 +44,8 @@ class Navbar extends React.Component{
 
     }
 
-    renderByLine = () => {
-        console.log(this.byLine)
-        if (this.byLine == true){
+    const renderByLine = () => {
+        if (byLine.current == true){
             return(
                 <div className='flex items-center justify-center flex-col text-center'>
                     <p className="fixed left-2 lg:inset-x-0 bottom-0 text-sm mb-3 font-terminal">
@@ -56,25 +54,17 @@ class Navbar extends React.Component{
                 </div>
             )
         }
-        else {
-            return(
-                <>
-                    
-                </>
-            )
-        }
     }
 
-    renderNavbar = () => {
-
+    const renderNavbar = () => {
         return (
-            <div className='text-lg md:text-xl font-display' key={this.key}>
-                {this.renderByLine()}
-                <div className='fixed bottom-2 left-2'>
-                    {this.left.map(button => (
+            <div className='text-lg md:text-xl font-display' key={key}>
+                {renderByLine()}
+                <div className='fixed flex flex-col md:flex-row bottom-2 left-2 md:gap-1'>
+                    {left.current.map(button => (
                         <button
-                            onClick={this.getEventHandler(button.event)}
-                            className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
+                            onClick={getEventHandler(button.event)}
+                            className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-start"
                         >
                             [ {button.name} ] 
                         </button>
@@ -82,9 +72,9 @@ class Navbar extends React.Component{
                 </div>
                 
                 <div className='fixed flex flex-col md:flex-row bottom-2 right-2 md:gap-1'>
-                    {this.right.map(button => (
+                    {right.current.map(button => (
                         <button
-                            onClick={this.getEventHandler(button.event)}
+                            onClick={getEventHandler(button.event)}
                             className="cursor-pointer hover:underline underline-offset-1 decoration-2 text-end"
                         >
                             [ {button.name} ] 
@@ -92,17 +82,15 @@ class Navbar extends React.Component{
                     ))}
                 </div>
             </div>
-        )
+        )    
     }
 
-    render() {
-        return ( 
-            <>
-                {this.renderNavbar()}
-            </>
-
-        )
-    }
+    return (
+        <>
+            {renderNavbar()}
+        </>
+    )
+    
 }
 
 export default Navbar

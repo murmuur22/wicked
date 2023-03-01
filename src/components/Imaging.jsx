@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { siteVersion, logoRef, randInt } from '../data/sitevalues';
 import photoPortfolio from '../data/photoPortfolio';
 import ImagingItems from './ImagingItems';
@@ -8,25 +8,26 @@ import Navbar from './Navbar';
 
 
 
-class Signin extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = { 
-            view : 'loading',
-        };
-      }
+function Imaging(){
+    const [ view, setView ] = useState('loading')
 
-    renderView = () => {
-        switch (this.state.view) {
+    useEffect(() => {
+
+        setTimeout(() => {
+            setView('verified');
+            setTimeout(() => {
+                setView('images');
+            }, 700)
+        }, randInt(100, 2000))
+
+    }, []);
+
+    const renderView = () => {
+        switch (view) {
             case 'loading': // loading screen
                 return (
                     <>
                         <VerifyingClient />
-                        {
-                            setTimeout(() => {
-                                this.setState({view: 'verified'});
-                            }, randInt(100, 2000))  
-                        }
                     </>
                 );
             case 'verified': // verified screen
@@ -38,11 +39,6 @@ class Signin extends React.Component{
                                 <span>{siteVersion}</span> <span>by robbie dyson</span>
                             </p>
                         </div>
-                        {
-                            setTimeout(() => {
-                                this.setState({view: 'images'});
-                            }, 700)
-                        }
                     </>
                 );
             case 'images': // display images
@@ -95,15 +91,13 @@ class Signin extends React.Component{
         }
     }
 
-    render() {
-        return (
-        <>
-            {this.renderView()}
-        </>
-        
-        )
-    }
+    return (
+    <>
+        {renderView()}
+    </>
+    
+    )
 
 }
 
-export default Signin;
+export default Imaging;

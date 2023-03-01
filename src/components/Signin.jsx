@@ -1,27 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { siteVersion, email, resume, logoRef } from '../data/sitevalues';
 import Profiles from './Profiles';
 import Navbar from './Navbar';
 
 
-class Signin extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = { 
-            view : "welcome",
-        };
-    }
+function Signin(){
+    const [ view, setView ] = useState('welcome')
 
-    backToWelcome = () => {
-        this.setState({ view: "welcome" });
-    }
-
-    backToSelect = () => {
-        this.setState({ view: "select" });
-    }
-
-    renderView = () => {
-        switch(this.state.view){
+    const renderView = () => {
+        switch(view){
             case "welcome":
                 return(
                     <>
@@ -39,7 +26,7 @@ class Signin extends React.Component{
                             <p className='text-2xl font-display'>
                             <span className='animate-blink pr-4'>&gt;</span>
                                 <button 
-                                    onClick={() => this.setState({ view: "select" })}
+                                    onClick={() => setView("select")}
                                     className="cursor-pointer hover:underline underline-offset-1 decoration-2"
                                 >
                                     SIGN IN
@@ -58,13 +45,13 @@ class Signin extends React.Component{
                                 <Profiles />
                                 <div className='flex flex-col gap-2'>
                                     <button
-                                        onClick={() => this.setState({ view: "admin" })}
+                                        onClick={() => setView("admin")}
                                         className='cursor-pointer transition duration-300 hover:scale-125 group border-black border-2 rounded-full'
                                     >
                                     <p className='px-4 py-1 font-body text-sm'>administrator</p>
                                     </button>
                                     <button
-                                        onClick={() => this.setState({ view: "other" })}
+                                        onClick={() => setView("other")}
                                         className='cursor-pointer transition duration-300 hover:scale-125 group border-black border-2 rounded-full'
                                     >
                                     <p className='px-3 py-1 font-body text-sm'>other...</p>
@@ -77,7 +64,7 @@ class Signin extends React.Component{
                                 right={[
                                     { name: 'RESUME', event:'resume' },
                                     { name: 'CONTACT', event:'contact' },
-                                    { name: 'BACK', event:this.backToWelcome },
+                                    { name: 'BACK', event:(() => setView("welcome")) },
                                 ]}
                             />
                     </>
@@ -102,7 +89,7 @@ class Signin extends React.Component{
                                     placeholder="enter password"
                                 />
                             </label>
-                            <input type='submit' value='ENTER' className='cursor-pointer hover:underline underline-offset-1 decoration-2'/>
+                            <input type='submit' value='ENTER' className='invisible'/>
                         </form>
                         
                         </div>
@@ -111,7 +98,7 @@ class Signin extends React.Component{
                             right={[
                                 { name: 'RESUME', event:'resume' },
                                 { name: 'CONTACT', event:'contact' },
-                                { name: 'BACK', event:this.backToSelect },
+                                { name: 'BACK', event:(() => setView("select")) },
                             ]}
                         />
                         
@@ -147,29 +134,26 @@ class Signin extends React.Component{
                                     placeholder="enter password"
                                 />
                             </label>
-                            <input type='submit' value='ENTER' className='cursor-pointer hover:underline underline-offset-1 decoration-2'/>
+                            <input type='submit' value='ENTER' className='invisible'/>
                         </form>
                         <Navbar 
                             key='other'
                             right={[
                                 { name: 'RESUME', event:'resume' },
                                 { name: 'CONTACT', event:'contact' },
-                                { name: 'BACK', event:this.backToSelect },
+                                { name: 'BACK', event:(() => setView("select")) },
                             ]}
                         />
                     </>
                 );
-    
         }
     }
 
-    render() {
-        return (
-            <>
-                {this.renderView()}
-            </>
-        );
-    }
+    return (
+        <>
+            {renderView()}
+        </>
+    );
 }
 
 export default Signin;

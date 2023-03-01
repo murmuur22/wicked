@@ -5,6 +5,12 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      cursor: {
+        'ak47': 'url(public/assets/cursors/ak47.cur), auto',
+        'frog': 'url(public/assets/cursors/frog.cur), auto',
+        'frog-point': 'url(public/assets/cursors/frog-point.cur), pointer',
+      },
+
       fontFamily: {
         'sans': ['helvetica-neue', 'sans-serif'],
         'light': ['helvetica-neue-light', 'sans-serif'],
