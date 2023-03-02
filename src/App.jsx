@@ -3,7 +3,7 @@ import VerifyingClient from './components/VerifyingClient.jsx';
 import { Route, Routes } from 'react-router-dom';
 const LazySignin = React.lazy(() => import('./components/Signin'));
 const LazyImaging = React.lazy(() => import('./components/Imaging'));
-import CursorTrail from './components/CursorTrail';
+import CursorTail from './components/CursorTail';
 import './styles/app.css';
 
 
@@ -23,7 +23,6 @@ function App() {
         } />
 
       </Routes>
-      <CursorTrail />
     </div>
   )
 }
