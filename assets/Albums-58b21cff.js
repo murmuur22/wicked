@@ -1,0 +1,1 @@
+import{a as e,F as n}from"./index-8e6e420c.js";import{N as r}from"./Navbar-cc9ea67e.js";function m(){return e(n,{children:(()=>e("div",{className:"",children:e(r,{byLine:!0,left:[],right:[{name:"RESUME",event:"resume"},{name:"CONTACT",event:"contact"},{name:"BACK",event:()=>window.open("/imaging","_self")}]})}))()})}export{m as default};
