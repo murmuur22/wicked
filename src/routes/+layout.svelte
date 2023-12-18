@@ -1,4 +1,11 @@
 <script>
+
+    /* Add Vercel Analytics */
+    import { dev } from '$app/environment';
+    import { inject } from '@vercel/analytics';
+    
+    inject({ mode: dev ? 'development' : 'production' });
+
     import "../app.css";
     import { goto, preloadData, pushState } from '$app/navigation'
     import Startup from "../components/Startup.svelte";
