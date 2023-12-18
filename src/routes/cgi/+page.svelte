@@ -5,5 +5,5 @@
 </script>
 
 <Window title="easter_egg">
-    <HoverPlayer forward="/portfolioimages/easter_egg/animation.mp4" backward="/portfolioimages/easter_egg/reverse.mp4"/>
+    <HoverPlayer forward="/WORK/easter_egg/animation.mp4" backward="/WORK/easter_egg/reverse.mp4"/>
 </Window>

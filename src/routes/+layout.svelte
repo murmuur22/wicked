@@ -126,13 +126,13 @@
         <div class="flex flex-col">
             <h2>Pinned</h2>
             <div class="flex gap-5">
-                <NavItem dest="/studio" color="stone-950" text_color="stone-950">
+                <NavItem dest="/studio" color="stone-950" text_color="stone-950" hover_color="stone-400" >
                     Studio
                 </NavItem>
-                <NavItem dest="/cgi" color="stone-950" text_color="stone-950">
+                <NavItem dest="/cgi" color="stone-950" text_color="stone-950" hover_color="stone-400" >
                     CGI
                 </NavItem>
-                <NavItem dest="/environmental" color="stone-950" text_color="stone-950">
+                <NavItem dest="/environmental" color="stone-950" text_color="stone-950" hover_color="stone-400" >
                     Environmental
                 </NavItem>
             </div>    
@@ -140,9 +140,9 @@
         <div class="flex flex-col">
             <h2>Links</h2>
             <div class="flex gap-5">
-                <a href="">resume</a>
-                <a href="">instagram</a>
-                <a href="">about me</a>
+                <a href="/">resume</a>
+                <a href="/">instagram</a>
+                <a href="/">about me</a>
             </div>    
         </div>    
     </div>
