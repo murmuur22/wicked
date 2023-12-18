@@ -1,20 +1,32 @@
 <script>
-    export let forward = "/";
-    export let backward = "/";
+    export let content;
 
-    let forward_time = 0;
-    let backward_time = 0;
+    let video = content[0];
 
-    let forward_display = "none";
-    let backward_display = "none";
+    let vidref;
+    let time;
+    let duration;
+    $: backward_time = duration - time;
+
+    let mouseIsOver = false;
 
     function handleMouseOver() {
-        forward_time = 0;
-        backward_display = "none";
+        console.log("in");
+        mouseIsOver = true;
+        vidref.play();
     }
     function handleMouseOut() {
-        backward_time = 0;
-        backward_display = "block";
+        console.log("out");
+        mouseIsOver = false;
+        time = backward_time;
+        vidref.play();
+    }
+    
+    $: playing(time)
+    function playing(time) {
+        if (time >= duration/2 && mouseIsOver){
+            vidref.pause();
+        }
     }
 
 </script>
@@ -28,24 +40,12 @@
     on:mouseover={handleMouseOver}
     on:mouseout={handleMouseOut}
 >
-    <video src={forward} playsinline muted
+    <video src={video.url} playsinline muted
         class="
             h-full w-full
         "
-        on:mouseover={(e) => {
-            e.target.play();
-        }}
-        bind:currentTime={forward_time}
-    />
-    <video src={backward} autoplay playsinline muted
-        class="
-            absolute
-            top-0 left-0
-            h-full w-full
-        "
-        style="
-            display: {backward_display};
-        "
-        bind:currentTime={backward_time}
+        bind:this={vidref}
+        bind:currentTime={time}
+        bind:duration
     />
 </div>

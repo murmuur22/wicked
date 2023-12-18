@@ -1,0 +1,23 @@
+{
+    "type": "filmstrip",
+    "icon": "/WORK/masked_encounter/img2.jpg",
+    "title": "masked_encounter",
+    "content": [
+        {
+            "type": "image",
+            "title": "img1.jpg", 
+            "url": "/WORK/masked_encounter/img1.jpg"
+        },
+        {
+            "type": "image",
+            "title": "img2.jpg", 
+            "url": "/WORK/masked_encounter/img2.jpg"
+        },
+        {
+            "type": "image",
+            "title": "img3.jpg", 
+            "url": "/WORK/masked_encounter/img3.jpg"
+        }
+
+    ]
+}

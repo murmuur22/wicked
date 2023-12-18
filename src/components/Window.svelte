@@ -32,23 +32,6 @@
 
     // zIndex updates when $windows changes
     $: zIndex = $windows.indexOf(windowID)
-
-    /*
-        On drag or resize set drag/resize variable to true
-    */
-	function onDrag() {
-		dragging = true;
-	}
-	function onResize() {
-		resizing = true;
-	}
-
-    /*
-        On click move windowID to front of $windows
-    */
-	function onClick() {
-        $windows = [...$windows.filter(item => item !== windowID), windowID]
-	}
 	
     /*
         On mouse move resize or drag window
@@ -76,12 +59,9 @@
             width += e.movementX;
         }
 	}
-	
-	function onMouseUp() {
-		dragging = false;
-        resizing = false;
-	}
 
+
+	
     /*
         On mount create windowID and add it to $windows store
             - if $windows is empty create id number 1
@@ -103,12 +83,26 @@
 		};
 	});
 
+    /* 
+        Window controller functions
+    */
+    export function show() { // Makes window visible
+        display = "flex";
+        $windows = [...$windows.filter(item => item !== windowID), windowID];  
+    }
+    export function hide() { // Hides window
+        display = "none";
+    }
+
 </script>
-<svelte:window on:mouseup={onMouseUp} on:mousemove={onMouseMove} bind:innerWidth={innerWidth} bind:innerHeight={innerHeight} />
+<svelte:window on:mouseup={() => {dragging = false; resizing = false;}} on:mousemove={onMouseMove} bind:innerWidth={innerWidth} bind:innerHeight={innerHeight} />
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-    on:mousedown={onClick}
+    on:mousedown={() => {
+        /* On click move windowID to front of $windows */
+        $windows = [...$windows.filter(item => item !== windowID), windowID];  
+    }}
     style="
         left: {left}px; top: {top}px; 
         width: {width}px; height: {height}px;
@@ -122,7 +116,7 @@
     "
 >
     <div
-        on:mousedown={onDrag}
+        on:mousedown={() => {dragging = true;}}
         class="
             sticky flex justify-between items-center w-full
             bg-stone-950 border-stone-50 
@@ -139,7 +133,7 @@
         <slot />
     </div>
     <button 
-            on:mousedown={onResize}
+            on:mousedown={() => {resizing = true;}}
             class="
                 absolute bottom-0 right-0
                 arrow

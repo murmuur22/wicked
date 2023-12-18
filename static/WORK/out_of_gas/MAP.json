@@ -1,5 +1,7 @@
 {
     "type": "filmstrip",
+    "icon": "/WORK/out_of_gas/lily_motion.gif",
+    "title": "out_of_gas",
     "content": [
         {
             "type": "image",

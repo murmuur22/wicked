@@ -1,44 +1,26 @@
 <script>
     import Window from "../../components/Window.svelte";
-    import WindowManager from "../../components/WindowManager.svelte";
-    import NavItem from "../../components/NavItem.svelte";
+    import Showcase from "../../components/showcase/Showcase.svelte";
     import Desktop from "../../components/Desktop.svelte";
+    import WindowShortcut from "../../components/WindowShortcut.svelte";
 
-
-    let images = [
-        {
-            title: 'bennett.jpg', 
-            url: '/WORK/bennett.jpg',
-            x: 33,
-            y: 68,
-            width: 504,
-            height: 648
-        },
-        {
-            title: 'jacob.jpg', 
-            url: '/WORK/jacob.jpg',
-            x: 914,
-            y: 37,
-            width: 486,
-            height: 735,
-        },
-        {
-            title: 'jacob2.jpg', 
-            url: '/WORK/jacob2.jpg',
-            x: 567,
-            y: 149,
-            width: 381,
-            height: 410,
-        },
-
-    ]
+    export let data;
+    const { MAPS } = data;
+    
+    let windowRefs = MAPS.map(() => ""); // Create list of window references at same length of MAPS
 
 </script>
 
-<WindowManager>
-    {#each images as image}
-    <Window title={image.title} left={image.x} top={image.y} width={image.width} height={image.height}>
-        <img src={image.url} alt={image.title} class="rounded-sm select-none"/>
-    </Window>
+<Desktop>
+    {#each MAPS as MAP,i}
+    <WindowShortcut ref={windowRefs[i]} src={MAP.icon}>
+        {MAP.title}
+    </WindowShortcut>
     {/each}
-</WindowManager>
+</Desktop>
+
+{#each MAPS as MAP, i}
+<Window title={MAP.title} bind:this={windowRefs[i]}>
+    <Showcase type={MAP.type} content={MAP.content}/>
+</Window>
+{/each}

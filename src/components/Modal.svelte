@@ -4,12 +4,13 @@
 	let dialog; // HTMLDialogElement
 
 	$: if (dialog && showModal) dialog.showModal();
+
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 <dialog
 	bind:this={dialog}
-	on:close={() => (showModal = false)}
+	on:close={() => showModal = false}
 	on:click|self={() => dialog.close()}
     class="
         max-w-4xl rounded-md
@@ -20,7 +21,7 @@
 	<div on:click|stopPropagation class="p-4">
         <div class="flex justify-between border-b-2 border-stone-950 mb-4">
             <slot name="header" />
-			<button autofocus on:click={() => dialog.close()}>✖</button>
+			<button on:click={() => dialog.close()}>✖</button>
         </div>
 		<slot />
 		<!-- svelte-ignore a11y-autofocus -->

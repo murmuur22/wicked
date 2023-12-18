@@ -1,12 +1,14 @@
 <script>
     import "../app.css";
+    import { goto, preloadData, pushState } from '$app/navigation'
     import Startup from "../components/Startup.svelte";
     import Welcome from "../components/Welcome.svelte";
-    import Modal from "../components/Modal.svelte";
     import { page } from "$app/stores";
     import { onMount } from "svelte";
     import Icon from "../components/Icon.svelte";
-    import NavItem from "../components/NavItem.svelte";
+
+    import Modal from "../components/Modal.svelte";
+    import NavItem from "../components/NavItem.svelte"
 
     /* Get date & time */
     let date = new Date();
@@ -14,10 +16,8 @@
     let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     $: month_day = dayNames[date.getDay()] + " " + monthNames[date.getMonth()] + " " + date.getDate();
     $: time = Math.abs(date.getHours()).toString().padStart(2, '0') + ':' + Math.abs(date.getMinutes()).toString().padStart(2, '0') + ':' + Math.abs(date.getSeconds()).toString().padStart(2, '0');
-
-    let showModal = false;
     
-    let do_startup = false;
+    let do_startup = false; // Boolean
     let stage = "startup"; // Start Sequence
 	onMount(() => {
 
@@ -51,6 +51,7 @@
     $: nav = currPage.slice(1)
 
 
+    let showModal; //Boolean
 
 </script>
 
@@ -113,12 +114,12 @@
         z-[101]
     "
 >
-    <button on:click={() => (showModal = true)} class="group flex flex-col items-center justify-center">
+    <button on:click={() => {showModal = true}} class="group flex flex-col items-center justify-center">
         <Icon name="dot_menu_y" class="group-hover:scale-125 transition duration-75 ease-in-out w-12" />
     </button>
 </div>
 
-<Modal bind:showModal>
+<Modal bind:showModal >
 	<h1 slot="header" class="font-display">
 		Quick Nav
 	</h1>
@@ -126,17 +127,23 @@
         <div class="flex flex-col">
             <h2>Pinned</h2>
             <div class="flex gap-5">
-                <NavItem dest="/studio" color="stone-950" text_color="stone-950" hover_color="stone-400" >
+                <NavItem dest="/studio" color="dark">
                     Studio
                 </NavItem>
-                <NavItem dest="/cgi" color="stone-950" text_color="stone-950" hover_color="stone-400" >
+                <NavItem dest="/cgi" color="dark">
                     CGI
                 </NavItem>
-                <NavItem dest="/environmental" color="stone-950" text_color="stone-950" hover_color="stone-400" >
+                <NavItem dest="/environmental" color="dark">
                     Environmental
                 </NavItem>
             </div>    
         </div>
+        <div class="flex flex-col">
+            <h2>File Explorer</h2>
+            <a href="/">resume</a>
+            <a href="/">instagram</a>
+            <a href="/">about me</a>    
+        </div>    
         <div class="flex flex-col">
             <h2>Links</h2>
             <div class="flex gap-5">
@@ -147,6 +154,7 @@
         </div>    
     </div>
 </Modal>
+
 {/if}
 
 
