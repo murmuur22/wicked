@@ -2,9 +2,11 @@
     import "../app.css";
     import Startup from "../components/Startup.svelte";
     import Welcome from "../components/Welcome.svelte";
+    import Modal from "../components/Modal.svelte";
     import { page } from "$app/stores";
     import { onMount } from "svelte";
     import Icon from "../components/Icon.svelte";
+    import NavItem from "../components/NavItem.svelte";
 
     /* Get date & time */
     let date = new Date();
@@ -13,9 +15,10 @@
     $: month_day = dayNames[date.getDay()] + " " + monthNames[date.getMonth()] + " " + date.getDate();
     $: time = Math.abs(date.getHours()).toString().padStart(2, '0') + ':' + Math.abs(date.getMinutes()).toString().padStart(2, '0') + ':' + Math.abs(date.getSeconds()).toString().padStart(2, '0');
 
-
+    let showModal = false;
     
-    let stage = 'startup'; // Start Sequence
+    let do_startup = false;
+    let stage = "startup"; // Start Sequence
 	onMount(() => {
 
         /* Update Date ever second */
@@ -23,15 +26,22 @@
 			date = new Date();
 		}, 1000);
 
-        /* Run boot sequence on first load*/
-		setTimeout(() => {
-            stage = 'welcome';
+        /* Run boot sequence on first load, if stage == startup */
+        if (do_startup) {
             setTimeout(() => {
-                stage = 'main';
-            }, 2200)
-        }, 3000)
+                stage = "welcome";
+                setTimeout(() => {
+                    stage = "main";
+                }, 2200)
+            }, 3000)
+        }
+        else{
+            stage = "main"
+        }
 
+        /* on unmount */
         return () => {
+            /* Clear date update interval */
 			clearInterval(interval);
 		};
 	});
@@ -79,19 +89,64 @@
     "
 >
     <div class="flex">
-        <a href="/" class="group mr-3">
-            <Icon name="home" class="w-5 group-hover:scale-125"/>
+        <a href="/" class="group mr-3 ">
+            <Icon name="home" class="w-5 group-hover:scale-125 transition duration-75 ease-in-out"/> 
         </a>
         {#each nav as item,i}
             <a href={"/"+nav.slice(0,i+1).toString().replace(",","/")} class="hover:underline underline-offset-1">/{item}</a>
         {/each}
 
     </div>
-    <div class="flex gap-5">
-        <p>{month_day}</p>
-        <p>{time}</p>
+    <div class="flex gap-6">
+        <div class="flex gap-3">
+            <p>{month_day}</p>
+            <p>{time}</p>
+        </div>
     </div>
 </div>
+<div 
+    class="
+        absolute bottom-0 left-0 w-full
+        flex items-center justify-center
+        text-stone-50
+        pb-1
+        z-[101]
+    "
+>
+    <button on:click={() => (showModal = true)} class="group flex flex-col items-center justify-center">
+        <Icon name="dot_menu_y" class="group-hover:scale-125 transition duration-75 ease-in-out w-12" />
+    </button>
+</div>
+
+<Modal bind:showModal>
+	<h1 slot="header" class="font-display">
+		Quick Nav
+	</h1>
+    <div class="flex flex-col gap-4">
+        <div class="flex flex-col">
+            <h2>Pinned</h2>
+            <div class="flex gap-5">
+                <NavItem dest="/studio" color="stone-950" text_color="stone-950">
+                    Studio
+                </NavItem>
+                <NavItem dest="/cgi" color="stone-950" text_color="stone-950">
+                    CGI
+                </NavItem>
+                <NavItem dest="/environmental" color="stone-950" text_color="stone-950">
+                    Environmental
+                </NavItem>
+            </div>    
+        </div>
+        <div class="flex flex-col">
+            <h2>Links</h2>
+            <div class="flex gap-5">
+                <a href="">resume</a>
+                <a href="">instagram</a>
+                <a href="">about me</a>
+            </div>    
+        </div>    
+    </div>
+</Modal>
 {/if}
 
 

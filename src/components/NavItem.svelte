@@ -1,12 +1,15 @@
 <script>
     export let type = "folder";
     export let dest = "/";
+    export let color = "stone-50";
+    export let text_color = "stone-50";
+    export let hover_color = "stone-700";
 </script>
 
 
 {#if type == "folder"}
-<a href={dest} class="flex flex-col items-center justify-center gap-y-1 text-xs text-stone-50 hover:bg-stone-700 px-1">
-    <svg class="fill-stone-50 stroke-0 w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.69 96">
+<a href={dest} class={`flex flex-col items-center justify-center gap-y-1 text-xs text-${text_color} hover:bg-${hover_color} px-1`}>
+    <svg class={`fill-${color} stroke-0 w-16`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.69 96">
         <path class="cls-1 " d="m89.48,15.9h-41.97v-.11s-7.51-7.31-7.51-7.31c-.68-.66-1.59-1.03-2.54-1.03H7.83C3.51,7.45,0,10.95,0,15.28v65.62C0,84.88,3.23,88.1,7.21,88.1h82.28c3.98,0,7.21-3.23,7.21-7.21V23.11c0-3.98-3.23-7.21-7.21-7.21Z"/>
     </svg>
     <slot />

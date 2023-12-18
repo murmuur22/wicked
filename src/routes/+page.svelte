@@ -1,6 +1,6 @@
 <script>
     import Desktop from "../components/Desktop.svelte";
-import NavItem from "../components/NavItem.svelte";
+    import NavItem from "../components/NavItem.svelte";
     import Window from "../components/Window.svelte";
 </script>
 

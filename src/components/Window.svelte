@@ -138,16 +138,15 @@
     <div class="overflow-y-auto overscroll-contain w-full h-full">
         <slot />
     </div>
-    <div class="justify-self-end flex justify-end">
-        <button 
+    <button 
             on:mousedown={onResize}
             class="
+                absolute bottom-0 right-0
                 arrow
                 cursor-nwse-resize
                 w-0 h-0
             "
-        />
-    </div>
+    />
 </div>
 
 <style>
