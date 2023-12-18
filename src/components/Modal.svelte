@@ -24,7 +24,6 @@
 			<button on:click={() => dialog.close()}>✖</button>
         </div>
 		<slot />
-		<!-- svelte-ignore a11y-autofocus -->
 	</div>
 </dialog>
 
