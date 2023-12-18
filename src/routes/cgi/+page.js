@@ -2,6 +2,7 @@ export const load = async ({ fetch }) => {
 
     let MAP_REFS = [
         "/WORK/easter_egg/MAP.json",
+        "/WORK/easter_egg_images/MAP.json",
         "/WORK/tesla_in_space/MAP.json",
         "/WORK/ectoplasma/MAP.json"
     ];

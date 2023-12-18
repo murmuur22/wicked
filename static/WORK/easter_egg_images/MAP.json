@@ -1,0 +1,22 @@
+{
+    "type": "filmstrip",
+    "icon": "/WORK/easter_egg_images/img1.jpg",
+    "title": "easter_egg",
+    "content": [
+        {
+            "type": "image",
+            "title": "img1.jpg",
+            "url": "/WORK/easter_egg_images/img1.jpg"
+        },
+        {
+            "type": "image",
+            "title": "img2.jpg",
+            "url": "/WORK/easter_egg_images/img2.jpg"
+        },
+        {
+            "type": "image",
+            "title": "img3.jpg",
+            "url": "/WORK/easter_egg_images/img3.jpg"
+        }
+    ]
+}

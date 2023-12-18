@@ -63,6 +63,7 @@
 
 
     let showModal; //Boolean
+    let showAbout; //Boolean
 
 </script>
 
@@ -151,19 +152,25 @@
         </div>
         <div class="flex flex-col">
             <h2>File Explorer</h2>
-            <a href="/">resume</a>
-            <a href="/">instagram</a>
-            <a href="/">about me</a>    
+            <a href="/">root/</a>
+            <a href="/studio">studio</a>    
+            <a href="/cgi">cgi</a>
+            <a href="/environmental">environmental</a>
         </div>    
         <div class="flex flex-col">
             <h2>Links</h2>
             <div class="flex gap-5">
                 <a href="/">resume</a>
-                <a href="/">instagram</a>
-                <a href="/">about me</a>
+                <a href="https://www.instagram.com/murmuur_/?next=%2F" target="_blank">instagram</a>
+                <button on:click={() => {showAbout = true}}>about me</button>
             </div>    
         </div>    
     </div>
+</Modal>
+<Modal bind:showModal={showAbout}>
+    <h1 slot="header" class="font-display">
+		About me
+	</h1>
 </Modal>
 
 {/if}
