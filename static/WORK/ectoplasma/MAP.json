@@ -1,0 +1,17 @@
+{
+    "type": "filmstrip",
+    "icon": "/WORK/ectoplasma/visible.jpg",
+    "title": "ectoplasma",
+    "content": [
+        {
+            "type": "image",
+            "title": "visible.jpg",
+            "url": "/WORK/ectoplasma/visible.jpg"
+        },
+        {
+            "type": "image",
+            "title": "invisible.jpg",
+            "url": "/WORK/ectoplasma/invisible.jpg"
+        }
+    ]
+}
