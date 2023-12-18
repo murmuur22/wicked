@@ -1,0 +1,23 @@
+{
+    "type": "filmstrip",
+    "icon": "/WORK/bullet_time/img1.jpg",
+    "title": "bullet_time",
+    "content": [
+        {
+            "type": "image",
+            "title": "img1.jpg", 
+            "url": "/WORK/bullet_time/img1.jpg"
+        },
+        {
+            "type": "image",
+            "title": "img2.jpg", 
+            "url": "/WORK/bullet_time/img2.jpg"
+        },
+        {
+            "type": "image",
+            "title": "graphic.jpg", 
+            "url": "/WORK/bullet_time/graphic.jpg"
+        }
+
+    ]
+}

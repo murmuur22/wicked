@@ -1,0 +1,10 @@
+{
+    "type": "hover_player",
+    "icon": "/WORK/easter_egg/end_frame.jpeg",
+    "title": "easter_egg",
+    "content": [
+        {
+            "url": "/WORK/easter_egg/motion.mp4"
+        }
+    ]
+}

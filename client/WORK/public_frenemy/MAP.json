@@ -1,0 +1,28 @@
+{
+    "type": "filmstrip",
+    "icon": "/WORK/public_frenemy/img1.jpg",
+    "title": "public_frenemy",
+    "content": [
+        {
+            "type": "image",
+            "title": "img1.jpg", 
+            "url": "/WORK/public_frenemy/img1.jpg"
+        },
+        {
+            "type": "image",
+            "title": "img2.jpg", 
+            "url": "/WORK/public_frenemy/img2.jpg"
+        },
+        {
+            "type": "image",
+            "title": "img3.jpg", 
+            "url": "/WORK/public_frenemy/img3.jpg"
+        },
+        {
+            "type": "image",
+            "title": "img4.jpg", 
+            "url": "/WORK/public_frenemy/img4.jpg"
+        }
+
+    ]
+}

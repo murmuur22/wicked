@@ -1,0 +1,23 @@
+{
+    "type": "filmstrip",
+    "icon": "/WORK/prince_tut/img4.jpg",
+    "title": "prince_tut",
+    "content": [
+        {
+            "type": "image",
+            "title": "img1.jpg", 
+            "url": "/WORK/prince_tut/img1.jpg"
+        },
+        {
+            "type": "image",
+            "title": "img2.jpg", 
+            "url": "/WORK/prince_tut/img2.jpg"
+        },
+        {
+            "type": "image",
+            "title": "img3.jpg", 
+            "url": "/WORK/prince_tut/img3.jpg"
+        }
+
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "type": "filmstrip",
+    "icon": "/WORK/out_of_gas/lily_motion.gif",
+    "title": "out_of_gas",
+    "content": [
+        {
+            "type": "image",
+            "title": "lily_motion.gif", 
+            "url": "/WORK/out_of_gas/lily_motion.gif"
+        },
+        {
+            "type": "image",
+            "title": "lily1.jpg", 
+            "url": "/WORK/out_of_gas/lily1.jpg"
+        },
+        {
+            "type": "image",
+            "title": "lily2.jpg", 
+            "url": "/WORK/out_of_gas/lily2.jpg"
+        }
+
+    ]
+}
