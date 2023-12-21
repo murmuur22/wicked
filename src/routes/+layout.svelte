@@ -28,7 +28,7 @@
     $: month_day = dayNames[date.getDay()] + " " + monthNames[date.getMonth()] + " " + date.getDate();
     $: time = Math.abs(date.getHours()).toString().padStart(2, '0') + ':' + Math.abs(date.getMinutes()).toString().padStart(2, '0') + ':' + Math.abs(date.getSeconds()).toString().padStart(2, '0');
     
-    let do_startup = false; // Boolean
+    let do_startup = true; // Boolean
     let stage = "startup"; // Start Sequence
 	onMount(() => {
 
