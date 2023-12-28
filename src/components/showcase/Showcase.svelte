@@ -1,6 +1,6 @@
 <script>
     import Filmstrip from "./basic/Filmstrip.svelte";
-    import HoverPlayer from "./interactive/HoverPlayer.svelte";
+    import StaggeringBeauty from "./interactive/StaggeringBeauty.svelte";
 
     export let content;
     export let type;
@@ -10,6 +10,6 @@
 
 {#if type == "filmstrip"}
     <Filmstrip content={content}/>
-{:else if type == "hover_player"}
-    <HoverPlayer content={content}/>
+{:else if type == "staggering_beauty"}
+    <StaggeringBeauty content={content}/>
 {/if}

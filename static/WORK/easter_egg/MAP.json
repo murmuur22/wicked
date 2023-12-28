@@ -1,10 +1,19 @@
 {
-    "type": "hover_player",
+    "type": "staggering_beauty",
     "icon": "/WORK/easter_egg/end_frame.jpeg",
     "title": "easter_egg",
     "content": [
         {
-            "url": "/WORK/easter_egg/motion.mp4"
+            "stage": "intro",
+            "url": "/WORK/easter_egg/Intro.mp4"
+        },
+        {
+            "stage": "slow",
+            "url": "/WORK/easter_egg/Slow.mp4"
+        },
+        {
+            "stage": "fast",
+            "url": "/WORK/easter_egg/LASERS.mp4"
         }
     ]
 }
