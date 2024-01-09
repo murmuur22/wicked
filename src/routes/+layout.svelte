@@ -43,8 +43,8 @@
                 stage = "welcome";
                 setTimeout(() => {
                     stage = "main";
-                }, 2200)
-            }, 3000)
+                }, 2900)
+            }, 4000)
         }
         else{
             stage = "main"
@@ -89,7 +89,6 @@
 <div class="absolute h-full w-full">
     <slot />
 </div>
-
 
 <div 
     class="

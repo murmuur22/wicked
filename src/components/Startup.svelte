@@ -1,6 +1,13 @@
 <script>
-    import log from '../data/startupLog';
+    import { animate } from 'motion';
+    import { onMount } from 'svelte'; 
+
+    import log from '$lib/data/startupLog';
     import randInt from '$lib/functions/randInt'
+
+    
+
+
 
     let start_date = new Date();
     let start_min = start_date.getMinutes();
