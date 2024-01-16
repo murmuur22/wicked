@@ -2,7 +2,7 @@
     /* IMPORT */
     import { onMount } from 'svelte';
     import { windows } from '../utlity/stores.js';
-    import { scale } from 'svelte/transition';
+    import { slide } from 'svelte/transition';
 
     let dimensions = {
         x: 100,
@@ -30,6 +30,8 @@
     let windowID;
 
     let display = "flex";
+
+    let visible = true;
 
     // zIndex updates when $windows changes
     $: zIndex = $windows.indexOf(windowID)
@@ -88,19 +90,21 @@
         Window controller functions
     */
     export function show() { // Makes window visible
-        display = "flex";
+        visible = true;
         $windows = [...$windows.filter(item => item !== windowID), windowID];  
-    }
+    };
     export function hide() { // Hides window
-        display = "none";
-    }
+        visible = false;
+    };
 
 </script>
-<svelte:window on:mouseup={() => {dragging = false; resizing = false;}} on:mousemove={onMouseMove} bind:innerWidth={innerWidth} bind:innerHeight={innerHeight} />
 
+
+<svelte:window on:mouseup={() => {dragging = false; resizing = false;}} on:mousemove={onMouseMove} bind:innerWidth={innerWidth} bind:innerHeight={innerHeight} />
+{#if visible}
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-    in:scale
+    transition:slide={{duration:200}}
     on:mousedown={() => {
         /* On click move windowID to front of $windows */
         $windows = [...$windows.filter(item => item !== windowID), windowID];  
@@ -128,7 +132,7 @@
 
         <p class="text-stone-50 font-display px-1 pl-2">{title}</p>
         <div class="bg-stone-700 relative flex justify-around items-center border-l-2 w-6">
-            <button on:click={() => {display = "none";}} class="text-stone-50 h-full w-full text-xs font-terminal">✖</button>
+            <button on:click={hide} class="text-stone-50 h-full w-full text-xs font-terminal">✖</button>
         </div>
     </div>
     <div class="overflow-y-auto overscroll-contain w-full h-full">
@@ -144,6 +148,7 @@
             "
     />
 </div>
+{/if}
 
 <style>
     .arrow {

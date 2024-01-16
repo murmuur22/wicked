@@ -37,7 +37,7 @@
 />
 
 <div
-    out:blur
+    out:blur={{duration:200}}
     class="absolute inset-0 flex items-center justify-center flex-col text-center 
     z-[100]"
 >
