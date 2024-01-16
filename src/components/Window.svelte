@@ -104,7 +104,7 @@
 {#if visible}
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-    transition:slide={{duration:200}}
+    transition:slide={{duration:150}}
     on:mousedown={() => {
         /* On click move windowID to front of $windows */
         $windows = [...$windows.filter(item => item !== windowID), windowID];  
