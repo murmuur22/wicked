@@ -11,7 +11,6 @@
     inject({ mode: dev ? 'development' : 'production' });
 
     import "../app.css";
-    import { goto, preloadData, pushState } from '$app/navigation'
     import Startup from "../components/Startup.svelte";
     import Welcome from "../components/Welcome.svelte";
     import { page } from "$app/stores";
@@ -43,7 +42,7 @@
                 stage = "welcome";
                 setTimeout(() => {
                     stage = "main";
-                }, 2900)
+                }, 4000)
             }, 4000)
         }
         else{
@@ -89,6 +88,7 @@
 <div class="absolute h-full w-full">
     <slot />
 </div>
+
 
 <div 
     class="

@@ -20,33 +20,6 @@ export default {
       animation: {
       },
       keyframes: {
-        
-        welcomeTitle: {
-          '0%': {
-            'border-radius': '0px',
-          },
-          '90%': { 
-            'border-width': '2px',
-            'border-radius': '0px',
-            'background-color': 'rgb(250 250 249)'
-          },
-          '100%': { 
-            'border-width': '2px',
-            'border-radius': '0px',
-            'background-color': 'rgb(12 10 9)'
-          }
-        },
-        welcomeBackground: {
-          '0%': { 
-            'opacity': '0'
-          },
-          '90%': { 
-            'opacity': '1'
-          },
-          '100%': { 
-            'opacity': '1'
-          },
-        }
       }
     },
   },

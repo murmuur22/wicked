@@ -1,4 +1,6 @@
 <script>
+    import { fly } from "svelte/transition";
+    import { backOut } from "svelte/easing";
     import Desktop from "../components/Desktop.svelte";
     import NavItem from "../components/NavItem.svelte";
     import Window from "../components/Window.svelte";
@@ -6,9 +8,11 @@
 </script>
 
 <Desktop>
-    <NavItem dest="/studio">
-        Studio
-    </NavItem>
+    <div in:fly={{y: 100,duration:200,delay:100,easing:backOut}}>
+        <NavItem dest="/studio">
+            Studio
+        </NavItem>
+    </div>
     <NavItem dest="/cgi">
         CGI
     </NavItem>
@@ -23,8 +27,5 @@
         <br>
         <span>click me {"->"} </span><a href="https://old.wicked.earth" target="_blank" class="text-display text-blue-400">old.wicked.earth</a>    
     </div>
-</Window>
-<Window title="old wicked" width={600} height={400} >
-    <iframe src="https://old.wicked.earth/" class="w-full h-full bg-stone-50"/>
 </Window>
 
