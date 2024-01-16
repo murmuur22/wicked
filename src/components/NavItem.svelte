@@ -1,5 +1,4 @@
 <script>
-    export let type = "folder";
     export let dest = "/";
     export let color = "light";
 </script>

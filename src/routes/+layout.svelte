@@ -1,4 +1,5 @@
 <script>
+	import '../app.css'
 
     /* Add Vercel analytics */
     import { dev } from '$app/environment';
@@ -10,7 +11,6 @@
     
     inject({ mode: dev ? 'development' : 'production' });
 
-    import "../app.css";
     import Startup from "../components/Startup.svelte";
     import Welcome from "../components/Welcome.svelte";
     import { page } from "$app/stores";
