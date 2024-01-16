@@ -1,4 +1,6 @@
 <script>
+    import { scale } from "svelte/transition";
+
 	export let showModal; // boolean
 
 	let dialog; // HTMLDialogElement
@@ -9,6 +11,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 <dialog
+	transition:scale
 	bind:this={dialog}
 	on:close={() => showModal = false}
 	on:click|self={() => dialog.close()}

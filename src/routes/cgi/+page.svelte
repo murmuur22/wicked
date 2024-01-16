@@ -20,7 +20,7 @@
 </Desktop>
 
 {#each MAPS as MAP, i}
-<Window title={MAP.title} bind:this={windowRefs[i]}>
+<Window title={MAP.title} bind:this={windowRefs[i]} width={600} height={400}>
     <Showcase type={MAP.type} content={MAP.content}/>
 </Window>
 {/each}

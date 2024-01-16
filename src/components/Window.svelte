@@ -2,6 +2,7 @@
     /* IMPORT */
     import { onMount } from 'svelte';
     import { windows } from '../utlity/stores.js';
+    import { scale } from 'svelte/transition';
 
     let dimensions = {
         x: 100,
@@ -99,6 +100,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
+    in:scale
     on:mousedown={() => {
         /* On click move windowID to front of $windows */
         $windows = [...$windows.filter(item => item !== windowID), windowID];  

@@ -13,12 +13,16 @@
             Studio
         </NavItem>
     </div>
+    <div in:fly={{y: 100,duration:200,delay:200,easing:backOut}}>
     <NavItem dest="/cgi">
         CGI
     </NavItem>
+    </div>
+    <div in:fly={{y: 100,duration:200,delay:300,easing:backOut}}>
     <NavItem dest="/environmental">
         Environmental
     </NavItem>
+    </div>
 </Desktop>
 
 <Window title="welcome" width={600} height={400} >

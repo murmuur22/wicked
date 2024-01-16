@@ -19,6 +19,7 @@
 
     import Modal from "../components/Modal.svelte";
     import NavItem from "../components/NavItem.svelte"
+    import PageTransition from '../components/PageTransition.svelte';
 
     /* Get date & time */
     let date = new Date();
@@ -42,7 +43,7 @@
                 stage = "welcome";
                 setTimeout(() => {
                     stage = "main";
-                }, 4000)
+                }, 2500)
             }, 4000)
         }
         else{
@@ -85,9 +86,9 @@
     absolute w-full h-full
     bg-[radial-gradient(rgb(68,64,60)_1px,_transparent_0)] bg-[length:25px_25px]
 " />
-<div class="absolute h-full w-full">
+<PageTransition key={currPage} duration={300} delay={100}>
     <slot />
-</div>
+</PageTransition>
 
 
 <div 
