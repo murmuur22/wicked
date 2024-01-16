@@ -17,12 +17,11 @@
 	export let top = dimensions.y;
     export let width = dimensions.width;
 	export let height = dimensions.height;
+    export let visible = true;
 
     let padding = 20;
-
     let innerWidth;
 	let innerHeight;
-
 
 	let dragging = false;
     let resizing = false;
@@ -31,7 +30,7 @@
 
     let display = "flex";
 
-    let visible = true;
+    
 
     // zIndex updates when $windows changes
     $: zIndex = $windows.indexOf(windowID)

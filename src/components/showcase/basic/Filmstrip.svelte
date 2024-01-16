@@ -1,4 +1,5 @@
 <script>
+    import { blur } from "svelte/transition";
     export let content;
 
     let curr_image = 0;
@@ -6,7 +7,9 @@
 </script>
 
 <div class="flex flex-col gap-2">
-    <img src={content[curr_image].url} alt={content[curr_image].title} class="rounded-sm pointer-events-none select-none pt-5 px-5">
+    {#key curr_image}
+        <img in:blur={{duration:300}} src={content[curr_image].url} alt={content[curr_image].title} class="rounded-sm pointer-events-none select-none pt-5 px-5">
+    {/key}
     <p class="text-stone-50 text-center border-b-2 border-stone-700 mb-4">{content[curr_image].title}</p>
     <ul class="flex overflow-x-auto gap-4 px-5">
         {#each content as {title, url}, i}
