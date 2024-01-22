@@ -1,0 +1,30 @@
+// schema.prisma
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider  = "postgresql"
+    url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Directory {
+    id          String      @id @default(uuid())
+    name        String
+    subDirs     Directory[] @relation("relatedDir")
+    files       File[]
+    parentDir   Directory?  @relation("relatedDir", fields: [parentDirId], references: [id])
+    parentDirId String?
+    isRoot      Boolean     @default(false)
+}
+
+model File {
+    id          String     @id @default(uuid())
+    name        String
+    type        String
+    map         String
+    parentDir   Directory? @relation(fields: [parentDirId], references: [id])
+    parentDirId String?
+}
