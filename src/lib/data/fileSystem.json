@@ -1,0 +1,72 @@
+{
+    "name": "/",
+    "type": "directory",
+    "contents": [
+        {
+            "name": "cgi/",
+            "type": "directory",
+            "contents": [
+                {
+                    "name": "easter_egg",
+                    "type": "file",
+                    "map": "/WORK/easter_egg_images/MAP.json"
+                },
+                {
+                    "name": "tesla_in_space",
+                    "type": "file",
+                    "map": "/WORK/tesla_in_space/MAP.json"
+                },
+                {
+                    "name": "ectoplasma",
+                    "type": "file",
+                    "map": "/WORK/ectoplasma/MAP.json"
+                }
+            ]
+        },
+        {
+            "name": "environmental/",
+            "type": "directory",
+            "contents": [
+                {
+                    "name": "out_of_gas",
+                    "type": "file",
+                    "map": "/WORK/out_of_gas/MAP.json"
+
+                },
+                {
+                    "name": "masked_encounter",
+                    "type": "file",
+                    "map": "/WORK/masked_encounter/MAP.json"
+                },
+                {
+                    "name": "prince_tut",
+                    "type": "file",
+                    "map": "/WORK/prince_tut/MAP.json"
+                }
+            ]
+        },
+        {
+            "name": "studio/",
+            "type": "directory",
+            "contents": [
+                {
+                    "name": "public_frenemy",
+                    "type": "file",
+                    "map": "/WORK/public_frenemy/MAP.json"
+
+                },
+                {
+                    "name": "halloween_lighting_test",
+                    "type": "file",
+                    "map": "/WORK/halloween_lighting_test/MAP.json"
+                },
+                {
+                    "name": "bullet_time",
+                    "type": "file",
+                    "map": "/WORK/bullet_time/MAP.json"
+                }
+        
+            ]
+        }
+    ]
+}

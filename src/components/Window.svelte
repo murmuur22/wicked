@@ -122,6 +122,7 @@
 >
     <div
         on:mousedown={() => {dragging = true;}}
+        on:dblclick={() => {console.log("maximizing")}}
         class="
             sticky flex justify-between items-center w-full
             bg-stone-950 border-stone-50 
