@@ -13,6 +13,7 @@ datasource db {
 model Directory {
     id          String      @id @default(uuid())
     name        String
+    path        String?     @unique
     subDirs     Directory[] @relation("relatedDir")
     files       File[]
     parentDir   Directory?  @relation("relatedDir", fields: [parentDirId], references: [id])
@@ -23,8 +24,14 @@ model Directory {
 model File {
     id          String     @id @default(uuid())
     name        String
-    type        String
+    path        String?    @unique
+    type        FileType
     map         String
     parentDir   Directory? @relation(fields: [parentDirId], references: [id])
     parentDirId String?
+}
+
+enum FileType {
+    Filmstrip
+    Embed
 }

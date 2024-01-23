@@ -1,9 +1,9 @@
 <script>
     import { fly } from "svelte/transition";
-    import Desktop from "../components/Desktop.svelte";
-    import NavItem from "../components/NavItem.svelte";
-    import Window from "../components/Window.svelte"
-    import WindowShortcut from "../components/WindowShortcut.svelte";
+    import Desktop from "../../components/Desktop.svelte";
+    import NavItem from "../../components/NavItem.svelte";
+    import Window from "../../components/Window.svelte"
+    import WindowShortcut from "../../components/WindowShortcut.svelte";
     import { backOut } from "svelte/easing";
     
     export let data;
