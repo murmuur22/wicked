@@ -26,7 +26,7 @@ model File {
     name        String
     path        String?    @unique
     type        FileType
-    map         String
+    map         Json
     parentDir   Directory? @relation(fields: [parentDirId], references: [id])
     parentDirId String?
 }
