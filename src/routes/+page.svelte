@@ -8,7 +8,7 @@
     
     export let data;
     let { subdirs, files } = data;
-
+    // bla
     let windowRefs = files.map(() => ""); // Create list of window references at same length of MAPS
 </script>
 
