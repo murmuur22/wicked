@@ -10,10 +10,19 @@ datasource db {
     directUrl = env("DIRECT_URL") // uses direct connection
 }
 
+model User {
+    id       String      @id @default(uuid())
+    username String      @unique
+    dirs     Directory[]
+    files    File[]
+}
+
 model Directory {
     id          String      @id @default(uuid())
     name        String
     path        String?     @unique
+    owner       User        @relation(fields: [ownerId], references: [id])
+    ownerId     String
     subDirs     Directory[] @relation("relatedDir")
     files       File[]
     parentDir   Directory?  @relation("relatedDir", fields: [parentDirId], references: [id])
@@ -27,6 +36,8 @@ model File {
     path        String?    @unique
     type        FileType
     map         Json
+    owner       User       @relation(fields: [ownerId], references: [id])
+    ownerId     String
     parentDir   Directory? @relation(fields: [parentDirId], references: [id])
     parentDirId String?
 }
