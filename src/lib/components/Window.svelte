@@ -1,7 +1,7 @@
 <script>
     /* IMPORT */
     import { onMount } from 'svelte';
-    import { windows } from '../utlity/stores.js';
+    import { windows } from '$lib/utils/stores.js';
     import { slide } from 'svelte/transition';
 
     let dimensions = {
