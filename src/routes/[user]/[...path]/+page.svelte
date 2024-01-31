@@ -29,13 +29,3 @@
         </div>
     {/each}
 </Desktop>
-
-{#each files as file, i}
-<Window title={file.name} bind:this={windowRefs[i]}>
-    <div class="p-5 text-stone-50">
-        <p class="">Hello welcome to my portfolio :). Thanks for visiting! This version of my site is still in development. Feel free to look around but know that some things may not work. For now please visit my old site to view my work.</p>
-        <br>
-        <span>click me {"->"} </span><a href="https://old.wicked.earth" target="_blank" class="text-display text-blue-400">old.wicked.earth</a>    
-    </div>
-</Window>
-{/each}
