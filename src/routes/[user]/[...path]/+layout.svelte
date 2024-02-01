@@ -90,11 +90,15 @@
     "
 >
     <div class="flex">
-        <a href="/" class="group mr-3 ">
+        <a href={"/"+nav.slice(0,1)} class="group mr-3 ">
             <Icon name="home" class="w-5 group-hover:scale-125 transition duration-75 ease-in-out"/> 
         </a>
         {#each nav as item,i}
-            <a href={"/"+nav.slice(0,i+1).toString().replace(",","/")} class="hover:underline underline-offset-1">/{item}</a>
+            {#if i == 0}
+                <a href={"/"+nav.slice(0,i+1).toString().replace(",","/")} class="hover:underline underline-offset-1">~</a>
+            {:else}
+                <a href={"/"+nav.slice(0,i+1).toString().replace(",","/")} class="hover:underline underline-offset-1">/{item}</a>
+            {/if}
         {/each}
 
     </div>
