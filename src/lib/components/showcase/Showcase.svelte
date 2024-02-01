@@ -1,17 +1,16 @@
 <script>
     import Filmstrip from "./basic/Filmstrip.svelte";
-    import StaggeringBeauty from "./interactive/StaggeringBeauty.svelte";
+    import Image from "./basic/Image.svelte";
 
-    export let content;
+    export let map;
     export let type;
     
 </script>
 
-
-{#if type == "filmstrip"}
-    <Filmstrip content={content}/>
-{:else if type == "staggering_beauty"}
-    <StaggeringBeauty content={content}/>
-{:else if type == "embed"}
-    <StaggeringBeauty content={content}/>
+{#if type == "Filmstrip"}
+    <Filmstrip content={map.content}/>
+{:else if type == "Image"}
+    <Image content={map.content}/>
+{:else if type == "Embed"}
+    <div></div>
 {/if}

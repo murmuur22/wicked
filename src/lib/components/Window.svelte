@@ -2,22 +2,34 @@
     /* IMPORT */
     import { onMount } from 'svelte';
     import { windows } from '$lib/utils/stores.js';
-    import { slide } from 'svelte/transition';
+    import { scale } from 'svelte/transition';
+    import randInt from '$lib/functions/randInt.js'
 
-    let dimensions = {
-        x: 100,
-        y: 100,
-        width: 100,
-        height: 100,
-    }
+
 
     /* PROPS */
     export let title = "";
-	export let left = dimensions.x;
-	export let top = dimensions.y;
-    export let width = dimensions.width;
-	export let height = dimensions.height;
     export let visible = true;
+    export let delay = 300;
+    export let x = 4;
+    export let y = 5;
+    export let screen = {
+        innerWidth: 600,
+        innerHeight: 300
+    };
+
+    let scaler = randInt(screen.innerHeight*0.15,screen.innerHeight*0.2)
+
+    let dimensions = {
+        x: randInt(100,screen.innerWidth*0.8),
+        y: randInt(250,screen.innerHeight*0.3),
+        width: x*scaler,
+        height: y*scaler,
+    }
+    let left = dimensions.x;
+    let top = dimensions.y;
+    let width = dimensions.width;
+	let height = dimensions.height;
 
     let padding = 20;
     let innerWidth;
@@ -103,7 +115,7 @@
 {#if visible}
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-    transition:slide={{duration:150}}
+    in:scale|global={{delay:delay,duration:150}} out:scale={{duration:150}}
     on:mousedown={() => {
         /* On click move windowID to front of $windows */
         $windows = [...$windows.filter(item => item !== windowID), windowID];  

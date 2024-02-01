@@ -7,7 +7,7 @@ export async function load({ fetch, params }) {
     const dirsResponse = await fetch(`/api/getSubdirs/${path}`);
     const subdirs = await dirsResponse.json();
 
-    const filesResponse = await fetch(`/api/getSubdirs/${path}`);
+    const filesResponse = await fetch(`/api/getFiles/${path}`);
     const files = await filesResponse.json();
 
     return { subdirs, files }

@@ -33,6 +33,7 @@ model Directory {
 model File {
     id          String     @id @default(uuid())
     name        String
+    icon        String
     path        String     @unique
     type        FileType
     map         Json
@@ -44,5 +45,6 @@ model File {
 
 enum FileType {
     Filmstrip
+    Image
     Embed
 }
