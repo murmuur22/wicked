@@ -9,6 +9,8 @@
     import NavItem from "$lib/components/NavItem.svelte"
     import PageTransition from '$lib/components/PageTransition.svelte';
 
+    export let data;
+
     /* Get date & time */
     let date = new Date();
     let dayNames = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
@@ -54,6 +56,8 @@
     let showAbout; //Boolean
 
 </script>
+
+<meta property="og:title" content={data.user +"/"+ data.path} />
 
 {#if stage == 'startup'}
 <div class="absolute h-full w-full">
@@ -141,14 +145,7 @@
                     Environmental
                 </NavItem>
             </div>    
-        </div>
-        <div class="flex flex-col">
-            <h2>File Explorer</h2>
-            <a href="/">root/</a>
-            <a href="/studio">studio</a>    
-            <a href="/cgi">cgi</a>
-            <a href="/environmental">environmental</a>
-        </div>    
+        </div> 
         <div class="flex flex-col border-t-2 border-stone-950">
             <div class="flex gap-5 justify-between">
                 <a href="https://www.instagram.com/murmuur_/?next=%2F" target="_blank">instagram</a>
