@@ -4,9 +4,6 @@
         <li>
             <span>{"> "}</span><a class="hover:underline" href="/@murmuur">murmuur</a>
         </li>
-        <li>
-            <span>{"> "}</span><a class="hover:underline" href="/@guest">guest</a>
-        </li>
     </ul>
     
     
