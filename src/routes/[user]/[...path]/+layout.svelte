@@ -9,8 +9,6 @@
     import NavItem from "$lib/components/NavItem.svelte"
     import PageTransition from '$lib/components/PageTransition.svelte';
 
-    export let data;
-
     /* Get date & time */
     let date = new Date();
     let dayNames = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
@@ -57,7 +55,7 @@
 
 </script>
 
-<meta property="og:title" content="POOPY" />
+<meta property="og:title" content={$page.url.pathname} />
 
 {#if stage == 'startup'}
 <div class="absolute h-full w-full">
