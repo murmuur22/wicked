@@ -56,6 +56,7 @@
 </script>
 
 <meta property="og:title" content={$page.url.pathname} />
+<meta property="og:image" content="https://www.apple.com/v/iphone/home/t/images/home/og.png?201610171354" />
 
 {#if stage == 'startup'}
 <div class="absolute h-full w-full">
