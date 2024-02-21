@@ -57,7 +57,7 @@
 
 </script>
 
-<meta property="og:title" content={data.user +"/"+ data.path} />
+<meta property="og:title" content="POOPY" />
 
 {#if stage == 'startup'}
 <div class="absolute h-full w-full">
