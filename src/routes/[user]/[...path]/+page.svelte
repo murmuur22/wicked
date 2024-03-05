@@ -41,7 +41,7 @@
 </Desktop>
 
 {#each files as file, i}
-<Window title={file.map.content.title} bind:this={windowRefs[i]} delay={200*(i+1)} x={file.map.size.x} y={file.map.size.y} screen={screen} >
+<Window title={file.title} bind:this={windowRefs[i]} delay={200*(i+1)} x={file.map.size.x} y={file.map.size.y} screen={screen} >
     <Showcase type={file.type} map={file.map} />
 </Window>
 {/each}
