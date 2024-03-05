@@ -1,6 +1,7 @@
 <script>
     import Filmstrip from "./basic/Filmstrip.svelte";
     import Image from "./basic/Image.svelte";
+    import Embed from "./basic/Embed.svelte";
 
     export let map;
     export let type;
@@ -12,5 +13,5 @@
 {:else if type == "Image"}
     <Image content={map.content}/>
 {:else if type == "Embed"}
-    <div></div>
+    <Embed content={map.content} />
 {/if}
