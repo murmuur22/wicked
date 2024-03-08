@@ -31,7 +31,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-    on:contextmenu|preventDefault={(e) => {contextMenu.show(e)}}
+    on:contextmenu|preventDefault|self={(e) => {contextMenu.show(e)}}
     class="grid grid-flow-row auto-cols-min gap-x-16 gap-y-8 p-9 pt-16"
 >
     <slot />

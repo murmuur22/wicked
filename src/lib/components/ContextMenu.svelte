@@ -82,5 +82,5 @@
 </nav>
 {/if}
 
-<svelte:window on:click={contextMenu.hide} on:contextmenu|preventDefault={contextMenu.show}/>
+<svelte:window on:click={contextMenu.hide}/>
 
