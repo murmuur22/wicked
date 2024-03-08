@@ -4,13 +4,15 @@
     import { windows } from '$lib/utils/stores.js';
     import { scale } from 'svelte/transition';
     import randInt from '$lib/functions/randInt.js'
-
-
+    import ContextMenu from '$lib/components/ContextMenu.svelte';
 
     /* PROPS */
     export let title = "";
     export let visible = true;
     export let delay = 300;
+    
+    /* TEMPORARY LOGIC FOR RANDOM SCREEN PLACEMENT */
+
     export let x = 4;
     export let y = 5;
     export let screen = {
@@ -30,10 +32,11 @@
     let top = dimensions.y;
     let width = dimensions.width;
 	let height = dimensions.height;
-
     let padding = 20;
     let innerWidth;
 	let innerHeight;
+
+    /* -------------------------------- */
 
 	let dragging = false;
     let resizing = false;
@@ -108,6 +111,40 @@
         visible = false;
     };
 
+    function maximize() {
+        console.log("maximizing")
+    }
+
+    /* 
+        Context menu controller 
+    */
+
+    let contextMenu;
+    let contextItems = [
+        {
+            'name': 'fullscreen',
+            'onClick': maximize,
+            'displayText': "fullscreen",
+            'class': 'fa-solid fa-up-right-and-down-left-from-center'
+        },
+        {
+            'name': 'open',
+            'onClick': maximize,
+            'displayText': "open in new tab",
+            'class': 'fa-solid fa-arrow-up-right-from-square'
+        },
+        {
+            'name': 'hr',
+        },
+        {
+            'name': 'close',
+            'onClick': hide,
+            'displayText': "close",
+            'class': 'fa-solid fa-xmark'
+        },
+    ];
+
+
 </script>
 
 
@@ -116,6 +153,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
     in:scale|global={{delay:delay,duration:150}} out:scale={{duration:150}}
+    on:contextmenu|preventDefault={(e) => {contextMenu.show(e)}}
     on:mousedown={() => {
         /* On click move windowID to front of $windows */
         $windows = [...$windows.filter(item => item !== windowID), windowID];  
@@ -134,7 +172,7 @@
 >
     <div
         on:mousedown={() => {dragging = true;}}
-        on:dblclick={() => {console.log("maximizing")}}
+        on:dblclick={maximize}
         class="
             sticky flex justify-between items-center w-full
             bg-stone-950 border-stone-50 
@@ -161,6 +199,7 @@
     />
 </div>
 {/if}
+<ContextMenu bind:contextMenu bind:contextItems />
 
 <style>
     .arrow {

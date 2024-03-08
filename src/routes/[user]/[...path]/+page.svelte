@@ -1,12 +1,14 @@
 <script>
+    import { backOut } from "svelte/easing";
     import { fly } from "svelte/transition";
+    import { onMount } from "svelte";
+    
     import Desktop from "$lib/components/Desktop.svelte";
     import NavItem from "$lib/components/NavItem.svelte";
     import Window from "$lib/components/Window.svelte"
     import WindowShortcut from "$lib/components/WindowShortcut.svelte";
     import Showcase from "$lib/components/showcase/Showcase.svelte";
-    import { backOut } from "svelte/easing";
-    import { onMount } from "svelte";
+
     
     export let data;
     let { subdirs, files } = data;
@@ -18,9 +20,6 @@
         innerHeight: window.innerHeight
     };
 
-    onMount(()=>{
-        console.log(screen)
-    });
 </script>
 
 <Desktop>
@@ -45,4 +44,3 @@
     <Showcase type={file.type} map={file.map} />
 </Window>
 {/each}
-

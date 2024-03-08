@@ -7,7 +7,7 @@
 
     import Modal from "$lib/components/Modal.svelte";
     import NavItem from "$lib/components/NavItem.svelte"
-    import PageTransition from '$lib/components/PageTransition.svelte';
+    import PageTransition from "$lib/components/PageTransition.svelte";
 
     /* Get date & time */
     let date = new Date();
@@ -55,6 +55,12 @@
 
 </script>
 
+<svelte:head>
+    <!-- You can change icon sets according to your taste. Change `class` value in `contextItems` above to represent your icons. -->
+    <!-- <link rel="stylesheet" href="/icon/css/mfglabs_iconset.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</svelte:head>
+
 <meta property="og:title" content={$page.url.pathname.substring(1)} />
 
 {#if stage == 'startup'}
@@ -93,7 +99,7 @@
 >
     <div class="flex">
         <a href={"/"+nav.slice(0,1)} class="group mr-3 ">
-            <Icon name="home" class="w-5 group-hover:scale-125 transition duration-75 ease-in-out"/> 
+            <i class="w-5 group-hover:scale-125 transition duration-75 ease-in-out fa-solid fa-house"/> 
         </a>
         {#each nav as item,i}
             {#if i == 0}
