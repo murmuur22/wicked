@@ -11,10 +11,23 @@ datasource db {
 }
 
 model User {
-    id       String      @id @default(uuid())
-    username String      @unique
-    dirs     Directory[]
-    files    File[]
+    id            String      @id @default(uuid())
+    username      String      @unique
+    role          Role
+    passwordHash  String?
+    userAuthToken String?     @unique
+    dirs          Directory[]
+    files         File[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt
+}
+
+enum Role {
+    Guest
+    User
+    Admin
+    Super
 }
 
 model Directory {
