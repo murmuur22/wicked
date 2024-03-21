@@ -1,4 +1,6 @@
 <script>
+    import { enhance } from '$app/forms';
+
     export let form;
 </script>
 
@@ -14,7 +16,7 @@
         </div>
         <div class="flex flex-col font-body self-center items-center">
             <form
-                action="?/login" method="POST"
+                action="?/login" method="POST" use:enhance
                 class="flex flex-col gap-8 text-xl"
             >
                 <div class="flex flex-col gap-4">

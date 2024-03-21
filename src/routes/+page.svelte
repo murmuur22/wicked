@@ -1,4 +1,6 @@
 <script>
+
+    import { enhance } from '$app/forms';
     import { page } from "$app/stores";
 </script>
 
@@ -10,7 +12,7 @@
 
     {#if $page.data.user}
         <a href="/admin" class="text-stone-50 hover:underline">admin</a>
-        <form class="text-stone-50" action="/logout" method="POST">
+        <form class="text-stone-50" action="/logout" method="POST" use:enhance>
             <button type="submit" class="hover:underline">logout</button>
         </form>
     {/if}
