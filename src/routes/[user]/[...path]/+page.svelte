@@ -1,7 +1,6 @@
 <script>
     import { backOut } from "svelte/easing";
     import { fly } from "svelte/transition";
-    import { onMount } from "svelte";
     
     import Desktop from "$lib/components/Desktop.svelte";
     import NavItem from "$lib/components/NavItem.svelte";

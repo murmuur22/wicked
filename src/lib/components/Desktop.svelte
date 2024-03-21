@@ -32,7 +32,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
     on:contextmenu|preventDefault|self={(e) => {contextMenu.show(e)}}
-    class="grid grid-flow-row auto-cols-min gap-x-16 gap-y-8 p-9 pt-16"
+    class="h-screen w-screen grid grid-flow-row auto-cols-min auto-rows-min gap-x-16 gap-y-8 p-9 pt-16"
 >
     <slot />
 </div>
