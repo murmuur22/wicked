@@ -9,7 +9,7 @@
     {/if}
 
     {#if $page.data.user}
-        <a href="/tools" class="text-stone-50 hover:underline">tools</a>
+        <a href="/admin" class="text-stone-50 hover:underline">admin</a>
         <form class="text-stone-50" action="/logout" method="POST">
             <button type="submit" class="hover:underline">logout</button>
         </form>
