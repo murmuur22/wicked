@@ -3,14 +3,14 @@ import log from "$lib/utils/log";
 
 export async function handle({ event, resolve }) {
 	log.bold(`New request being made from ${event.url.pathname}`);
-	log.plain("loading session");
+	log.plain("loading user session");
 
 	// get session cookies from browser
 	const session = event.cookies.get("session");
 
 	// check if session exists
 	if (!session) {
-		log.plain("no session found");
+		log.plain("no user session found");
 		return await resolve(event);
 	}
 	log.plain(`session found -> ${session}`);
