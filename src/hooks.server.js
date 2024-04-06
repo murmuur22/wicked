@@ -18,17 +18,17 @@ export async function handle({ event, resolve }) {
 	// get user from database
 	const user = await prisma.user.findUnique({
 		where: { userAuthToken: session },
-		select: { username: true, role: true },
+		select: { id: true, username: true, role: true },
 	});
 
 	if (user) {
 		log.plain(`user found -> ${user.username}`);
 		event.locals.user = {
+			id: user.id,
 			name: user.username,
 			role: user.role,
 		};
 	}
 
-	log.bold("Loading page");
 	return await resolve(event);
 }

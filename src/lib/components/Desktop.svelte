@@ -2,10 +2,8 @@
     import ContextMenu from "$lib/components/ContextMenu.svelte";
 
 
-    /* 
-        Context menu controller 
-    */
-
+    
+    /* Context menu controller */
     function test() {
         console.log("hello");
     }

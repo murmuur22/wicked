@@ -2,18 +2,18 @@
     import ContextMenu from "$lib/components/ContextMenu.svelte";
     import { goto } from '$app/navigation';
 
-
     export let dest = "/";
     export let color = "light";
 
-        /* 
-        Context menu controller 
-    */
+    /*  Context menu controller */
+    let contextMenu;
+
+    // context menu functions
     function test() {
         console.log("hello");
     }
 
-    let contextMenu;
+    // context menu items
     let contextItems = [
         {
             'name': 'open',

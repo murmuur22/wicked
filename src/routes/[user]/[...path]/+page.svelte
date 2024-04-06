@@ -31,7 +31,7 @@
     {/each}
     {#each files as file,i}
         <div in:fly|global={{y: 100,duration:200,delay:100*(i+(subdirs.length+1)),easing:backOut}}>
-            <WindowShortcut ref={windowRefs[i]} src={file.icon}>
+            <WindowShortcut ref={windowRefs[i]} src={file.icon} name={file.name} ownerId={file.ownerId}>
                 {file.name}
             </WindowShortcut>
         </div>

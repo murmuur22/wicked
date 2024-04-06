@@ -1,7 +1,12 @@
 <script>
     import { scale } from "svelte/transition";
 
-	export let showModal; // boolean
+	let showModal; // boolean
+
+	export function show() {
+		showModal = true;
+	}
+
 
 	let dialog; // HTMLDialogElement
 
@@ -22,7 +27,7 @@
 >
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div on:click|stopPropagation class="p-4">
-        <div class="flex justify-between border-b-2 border-stone-950 mb-4">
+        <div class="flex justify-between border-b-2 border-stone-400 mb-4">
             <slot name="header" />
 			<button on:click={() => dialog.close()}>✖</button>
         </div>

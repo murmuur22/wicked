@@ -3,11 +3,14 @@
     import Welcome from "$lib/components/Welcome.svelte";
     import { page } from "$app/stores";
     import { onMount } from "svelte";
-    import Icon from "$lib/components/Icon.svelte";
 
+    import Icon from "$lib/components/Icon.svelte";
     import Modal from "$lib/components/Modal.svelte";
     import NavItem from "$lib/components/NavItem.svelte"
     import PageTransition from "$lib/components/PageTransition.svelte";
+
+    /* Get user */
+    let user = $page.data.user;
 
     /* Get date & time */
     let date = new Date();
@@ -16,10 +19,9 @@
     $: month_day = dayNames[date.getDay()] + " " + monthNames[date.getMonth()] + " " + date.getDate();
     $: time = Math.abs(date.getHours()).toString().padStart(2, '0') + ':' + Math.abs(date.getMinutes()).toString().padStart(2, '0') + ':' + Math.abs(date.getSeconds()).toString().padStart(2, '0');
     
-    let do_startup = true; // Boolean
+    let do_startup = false; // Boolean
     let stage = "startup"; // Start Sequence
 	onMount(() => {
-
         /* Update Date ever second */
         const interval = setInterval(() => {
 			date = new Date();
@@ -51,22 +53,18 @@
 
 
     let showModal; //Boolean
-    let showAbout; //Boolean
 
 </script>
 
-<svelte:head>
-    <!-- You can change icon sets according to your taste. Change `class` value in `contextItems` above to represent your icons. -->
-    <!-- <link rel="stylesheet" href="/icon/css/mfglabs_iconset.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</svelte:head>
-
 <meta property="og:title" content={$page.url.pathname.substring(1)} />
 
+<!-- STARTUP SEQUENCE -->
 {#if stage == 'startup'}
 <div class="absolute h-full w-full">
     <Startup />
 </div>
+
+<!-- WELCOME MESSAGE -->
 {:else if stage == 'welcome'}
 <div class="
     absolute w-full h-full
@@ -77,6 +75,9 @@
 <div class="absolute h-full w-full">
     <Welcome />
 </div>
+
+
+<!-- MAIN SEQUENCE -->
 {:else if stage == 'main'}
 <div class="
     absolute w-full h-full
@@ -103,7 +104,11 @@
         </a>
         {#each nav as item,i}
             {#if i == 0}
-                <a href={"/"+nav.slice(0,i+1).toString().replace(",","/")} class="hover:underline underline-offset-1">~</a>
+                {#if user && item.includes(user.name)}
+                    <a href={"/"+nav.slice(0,i+1).toString().replace(",","/")} class="hover:underline underline-offset-1">~</a>
+                {:else}
+                    <a href={"/"+nav.slice(0,i+1).toString().replace(",","/")} class="hover:underline underline-offset-1">{item}</a>
+                {/if}
             {:else}
                 <a href={"/"+nav.slice(0,i+1).toString().replace(",","/")} class="hover:underline underline-offset-1">/{item}</a>
             {/if}
@@ -117,16 +122,18 @@
         </div>
     </div>
 </div>
+
 <div 
     class="
         absolute bottom-0 left-0 w-full
         flex items-center justify-center
+        pointer-events-none
         text-stone-50
         pb-1
         z-[101]
     "
 >
-    <button on:click={() => {showModal = true}} class="group flex flex-col items-center justify-center">
+    <button on:click={() => {showModal = true}} class="group flex flex-col items-center justify-center pointer-events-auto">
         <Icon name="dot_menu_y" class="group-hover:scale-125 transition duration-75 ease-in-out w-12" />
     </button>
 </div>
@@ -139,31 +146,17 @@
         <div class="flex flex-col">
             <h2>Pinned</h2>
             <div class="flex gap-5">
-                <NavItem dest="/studio" color="dark">
-                    Studio
-                </NavItem>
                 <NavItem dest="/cgi" color="dark">
-                    CGI
-                </NavItem>
-                <NavItem dest="/environmental" color="dark">
-                    Environmental
+                    cgi
                 </NavItem>
             </div>    
         </div> 
-        <div class="flex flex-col border-t-2 border-stone-950">
+        <div class="flex flex-col border-t-2 border-stone-400">
             <div class="flex gap-5 justify-between">
                 <a href="https://www.instagram.com/murmuur_/?next=%2F" target="_blank">instagram</a>
-                <button on:click={() => {showAbout = true}}>about me</button>
+                <button on:click={() => {console.log("about me")}}>about me</button>
             </div>    
         </div>    
-    </div>
-</Modal>
-<Modal bind:showModal={showAbout}>
-    <h1 slot="header" class="font-display">
-		About me
-	</h1>
-    <div class="">
-        TEXT BOX
     </div>
 </Modal>
 
