@@ -48,7 +48,7 @@
 	});
 
     /* Create nav bar */
-    $: currPage = $page.url.pathname.split('/');
+    $: currPage = $page.url.pathname.split('/'); //TODO refactor to use the path slug value
     $: nav = currPage.slice(1)
 
 

@@ -78,20 +78,23 @@
 	<h1 slot="header" class="font-display">
 		Rename
 	</h1>
-    <form
-        action="?/login" method="POST" use:enhance
+
+    <!-- DOESNT WORK BECAUSE IT IS IN COMPONENT -->
+    <form 
+        action="/api/renameFile" method="POST" use:enhance
         class="flex flex-col gap-2 text-xl"
     >
         <div class="flex flex-col gap-4">
             <label class="flex flex-col items-start justify-center">
                 <input 
-                    type="text" name="username"
+                    type="text" name="newName"
                     placeholder={name}
                     class="bg-stone-50 border-2 border-stone-400 rounded-md px-2
                     focus:outline-stone-700"
                 />
             </label>
         </div>
+        <input type="hidden" name="path" value={$page.url.pathname.split("/").slice(1).join("/")}>
         <input type="submit" value="enter"
             class="font-body w-2/3 self-center hover:bg-stone-700 cursor-pointer rounded-full bg-stone-950 text-stone-50 text-md"
         />
