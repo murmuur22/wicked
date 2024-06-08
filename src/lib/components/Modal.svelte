@@ -3,14 +3,17 @@
 
 	let showModal; // boolean
 
+	export let dialog; // HTMLDialogElement
+
+	$: if (dialog && showModal) dialog.showModal();
+
 	export function show() {
 		showModal = true;
 	}
 
-
-	let dialog; // HTMLDialogElement
-
-	$: if (dialog && showModal) dialog.showModal();
+	export function hide() {
+		dialog.close();
+	}
 
 </script>
 

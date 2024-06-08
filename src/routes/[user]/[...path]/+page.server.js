@@ -1,4 +1,6 @@
 /** @type {import('./$types').PageServerLoad} */
+import log from "$lib/utils/log";
+
 export async function load({ fetch, params }) {
 	let path = !(params.path.length === 0) ? `${params.user}/${params.path}` : params.user;
 
@@ -12,3 +14,23 @@ export async function load({ fetch, params }) {
 
 	return { subdirs, files };
 }
+
+export const actions = {
+	/* Rename file action */
+	renameFile: async ({ fetch, cookies, request }) => {
+		// get form data
+		const formData = await request.formData();
+		const newName = String(formData.get("newName"));
+		const path = String(formData.get("path"));
+
+		const myHeaders = new Headers();
+		myHeaders.append("authToken", cookies.get("session"));
+
+		const options = {
+			method: "POST",
+			headers: myHeaders,
+		};
+
+		await fetch(`/api/renameFile?newName=${newName}&path=${path}`, options);
+	},
+};

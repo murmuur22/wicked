@@ -1,17 +1,17 @@
 import { error, json } from "@sveltejs/kit";
 import prisma from "$lib/prisma";
 
-export async function POST({ request, url }) {
+export async function POST({ request, cookies, url }) {
 	// Get headers
-	const authToken = request.headers.get("authToken");
-	console.log(authToken);
+	const authToken = cookies.get("session");
 
 	// check if authToken exists
 	if (!authToken) {
 		throw error(401, "Unauthorized: no authetication token found");
 	}
 
-	// validate AuthToken
+	//TODO make this check if file is owned by user
+	// validate AuthToken (DOESNT ACTUALLY CHECK IF FILE IS OWNED BY USER)
 	try {
 		await prisma.user.findUniqueOrThrow({
 			where: {
@@ -37,7 +37,6 @@ export async function POST({ request, url }) {
 			path: newPath,
 		},
 	});
-	console.log(updateFilename);
 
 	return json({ message: "Hello" }, { status: 200 });
 }

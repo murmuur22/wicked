@@ -62,6 +62,11 @@
         }
     ];
 
+    function onSubmit() {
+        renameModal.hide();
+        return false;
+    }
+
 </script>
 
 
@@ -79,14 +84,14 @@
 		Rename
 	</h1>
 
-    <!-- DOESNT WORK BECAUSE IT IS IN COMPONENT -->
     <form 
-        action="/api/renameFile" method="POST" use:enhance
+        action="?/renameFile" method="POST" use:enhance
+        on:submit={onSubmit}
         class="flex flex-col gap-2 text-xl"
     >
         <div class="flex flex-col gap-4">
             <label class="flex flex-col items-start justify-center">
-                <input 
+                <input
                     type="text" name="newName"
                     placeholder={name}
                     class="bg-stone-50 border-2 border-stone-400 rounded-md px-2
@@ -94,7 +99,7 @@
                 />
             </label>
         </div>
-        <input type="hidden" name="path" value={$page.url.pathname.split("/").slice(1).join("/")}>
+        <input type="hidden" name="path" value={"/"+[...$page.url.pathname.split("/").slice(1), name].join("/")}>
         <input type="submit" value="enter"
             class="font-body w-2/3 self-center hover:bg-stone-700 cursor-pointer rounded-full bg-stone-950 text-stone-50 text-md"
         />
