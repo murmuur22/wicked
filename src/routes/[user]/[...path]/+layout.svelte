@@ -2,6 +2,7 @@
     import Startup from "$lib/components/Startup.svelte";
     import Welcome from "$lib/components/Welcome.svelte";
     import { page } from "$app/stores";
+    import { enhance } from '$app/forms';
     import { onMount } from "svelte";
 
     import Icon from "$lib/components/Icon.svelte";
@@ -52,7 +53,7 @@
     $: nav = currPage.slice(1)
 
 
-    let showModal; //Boolean
+    let pad; // Dialog Object
 
 </script>
 
@@ -133,12 +134,12 @@
         z-[101]
     "
 >
-    <button on:click={() => {showModal = true}} class="group flex flex-col items-center justify-center pointer-events-auto">
+    <button on:click={() => {pad.show()}} class="group flex flex-col items-center justify-center pointer-events-auto">
         <Icon name="dot_menu_y" class="group-hover:scale-125 transition duration-75 ease-in-out w-12" />
     </button>
 </div>
 
-<Modal bind:showModal >
+<Modal bind:this={pad}>
 	<h1 slot="header" class="font-display">
 		Quick Nav
 	</h1>
@@ -153,8 +154,16 @@
         </div> 
         <div class="flex flex-col border-t-2 border-stone-400">
             <div class="flex gap-5 justify-between">
-                <a href="https://www.instagram.com/murmuur_/?next=%2F" target="_blank">instagram</a>
-                <button on:click={() => {console.log("about me")}}>about me</button>
+                {#if !$page.data.user}
+                    <a href="/login" on:click={()=>{console.log("hello")}} class="text-stone-950 hover:underline">login</a>
+                {/if}
+            
+                {#if $page.data.user}
+                    <a href="/admin" class="text-stone-950 hover:underline">admin</a>
+                    <form class="text-stone-950" action="/logout" method="POST" use:enhance>
+                        <button type="submit" class="hover:underline">logout</button>
+                    </form>
+                {/if}
             </div>    
         </div>    
     </div>

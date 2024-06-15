@@ -1,6 +1,7 @@
 <script>
     import { backOut } from "svelte/easing";
     import { fly } from "svelte/transition";
+    import { page } from "$app/stores";
     
     import Desktop from "$lib/components/Desktop.svelte";
     import NavItem from "$lib/components/NavItem.svelte";
@@ -19,20 +20,34 @@
         innerHeight: window.innerHeight
     };
 
-    // Check if on mobile device by checking if userAgent contains android or iphone
+    /* Check if on mobile device by checking if userAgent contains android or iphone */
     let isMobile = () => {
         return /Android|iPhone/i.test(navigator.userAgent);
     };
 
+    /* Get backlink */
+    let backlink = $page.url.pathname.split("/").slice(0,-1).join("/");
+
 </script>
 
-{#if isMobile() == true}
+{#if isMobile() == true} 
+    <!-- THIS IS PLACEHOLDER CODE ... NEEDS REFACTORING -->
     <div
         class="h-screen w-screen flex flex-col p-9 pt-16 gap-4 overflow-y-scroll"
     >
+        {#if backlink != ""}
+        <!-- FIX SO THE TIMING DELAY IS PROPER ON HOME DIRECTORY -->
+        <a
+            in:fly|global={{x: 100,duration:200,delay:100,easing:backOut}}
+            class="group h-8 flex flex-row items-center gap-2 text-xs text-stone-50 hover:text-stone-950 border-2 border-stone-50 bg-stone-950 hover:bg-stone-50 pl-2" href={backlink}
+        >    
+            <i class="fa-solid fa-arrow-turn-up scale-x-[-1]"></i>
+            <h1>/..</h1>
+        </a>
+        {/if}
         {#each subdirs as dir,i}
             <a
-                in:fly|global={{x: 100,duration:200,delay:100*(i+1),easing:backOut}}
+                in:fly|global={{x: 100,duration:200,delay:100*(i+1+1),easing:backOut}}
                 class="group h-8 flex flex-row items-center gap-2 text-xs text-stone-50 hover:text-stone-950 border-2 border-stone-50 bg-stone-950 hover:bg-stone-50 pl-2" href={dir.path}
             >    
                 <svg class="stroke-0 h-2/4 fill-stone-50 group-hover:fill-stone-950" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.69 96">

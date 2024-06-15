@@ -13,7 +13,7 @@
 
 
     // give full access if user is admin or owner
-    const hasAccess = (user && ((user.role === "Admin")||(user.id === ownerId))) ? true : false;
+    const IsOwner = (user && ((user.role === "Admin")||(user.id === ownerId))) ? true : false;
 
 
     /* Context menu controller */
@@ -24,7 +24,7 @@
     let renameModal;
 
     let contextMenu;
-    let contextItems = (hasAccess) ? 
+    let contextItems = (IsOwner) ? 
     [ // full options
         {
             'name': 'open',
