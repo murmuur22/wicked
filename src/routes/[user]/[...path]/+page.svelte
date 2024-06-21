@@ -1,6 +1,7 @@
 <script>
     import { backOut } from "svelte/easing";
     import { fly } from "svelte/transition";
+	import { slide } from "svelte/transition";
     import { page } from "$app/stores";
     
     import Desktop from "$lib/components/Desktop.svelte";
@@ -13,7 +14,7 @@
     export let data;
     let { subdirs, files } = data;
 
-    let windowRefs = files.map(() => ""); // Create list of window references at same length of MAPS
+    let windowRefs = files.map(() => false); // Create list of window references at same length of MAPS
 
     let screen = {
         innerWidth: window.innerWidth,
@@ -56,17 +57,23 @@
                 <h1>/{dir.name}</h1>
             </a>
         {/each}
+
         {#each files as file,i}
             <div
                 in:fly|global={{x: 100,duration:200,delay:100*(i+1),easing:backOut}}
                 class="flex flex-col border-stone-50 bg-stone-950 border-2"
             >
-                <Showcase type={file.type} map={file.map} />
-                <div class="h-8 flex flex-row items-center gap-4 text-xs text-stone-950 border-t-2 border-stone-50 pl-2 bg-stone-50">
+                {#if windowRefs[i]==true}
+                    <div transition:slide >
+                        <Showcase type={file.type} map={file.map} />
+                    </div>
+                {/if}
+                <button on:click={()=>{windowRefs[i] = !windowRefs[i];}} class={"h-8 flex flex-row items-center gap-4 text-xs pl-2 " + (windowRefs[i] ? "text-stone-950 border-t-2 border-stone-50 bg-stone-50" : "text-stone-50 bg-stone-950 hover:bg-stone-50 hover:text-stone-950")}>
                     <h1>{file.name}</h1>
-                </div>
+                </button>
             </div>
         {/each}
+        
     </div>
 {:else}
     <Desktop>
