@@ -14,7 +14,7 @@
     export let data;
     let { subdirs, files } = data;
 
-    let windowRefs = files.map(() => false); // Create list of window references at same length of MAPS
+    let windowRefs = files.map(() => false); // Create list of window references at same length of MAPS, is false for mobile version (gets overwritten on desktop to the window ref)
 
     let screen = {
         innerWidth: window.innerWidth,
